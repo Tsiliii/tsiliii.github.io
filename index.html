@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Thodoris Tsilivis — PhD Student, Boston University</title>
+  <meta name="description" content="Thodoris Tsilivis (Θοδωρής Τσιλιβής) — PhD student in Computing and Data Science at Boston University. Research in algorithmic game theory, mechanism design, and randomized algorithms." />
+  <meta name="keywords" content="Thodoris Tsilivis, PhD, Boston University, algorithmic game theory, mechanism design, randomized algorithms, computer science" />
+  <meta name="author" content="Thodoris Tsilivis" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Thodoris Tsilivis — PhD Student, Boston University" />
+  <meta property="og:description" content="PhD student in Computing and Data Science at Boston University. Research in algorithmic game theory, mechanism design, and randomized algorithms." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tsiliii.github.io" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand">Thodoris<span>.</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#presentations">Talks</a></li>
+        <li><a href="#personal">Personal</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    <div class="hero__content">
+      <p class="hero__greeting">// hello, world</p>
+      <h1 class="hero__name">Thodoris <span class="accent">Tsilivis</span></h1>
+      <p class="hero__subtitle">
+        PhD Student in Computing &amp; Data Science<br />
+        Boston University · Advised by <a href="https://www.kiragoldner.com/" target="_blank" rel="noopener">Kira Goldner</a>
+      </p>
+      <div class="hero__cta-group">
+        <a href="assets/cv.pdf" class="btn btn--primary" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Curriculum Vitae
+        </a>
+        <a href="mailto:tsilivis@bu.edu" class="btn btn--outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="section section--alt" id="about">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">// about me</span>
+        <h2 class="section__title">Welcome to my page</h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="about__grid reveal">
+        <!-- Photo -->
+        <div class="about__photo-wrapper">
+          <img src="assets/profile.jpg" alt="Thodoris Tsilivis" class="about__photo" />
+        </div>
+
+        <!-- Bio -->
+        <div class="about__bio">
+          <p>
+            I am <strong>Thodoris Tsilivis</strong> (Θοδωρής Τσιλιβής), a third-year Ph.D. student in
+            <strong>Computing and Data Science</strong> at <strong>Boston University</strong>. My research
+            interests lie in <strong>algorithmic game theory</strong>, <strong>mechanism design</strong>,
+            and <strong>randomized algorithms</strong>. My Ph.D. is advised by
+            Professor <a href="https://www.kiragoldner.com/" target="_blank" rel="noopener">Kira Goldner</a>.
+          </p>
+          <p>
+            I received my joint BSc &amp; MSc in Electrical and Computer Engineering at the
+            <strong>National Technical University of Athens</strong>. For my thesis,
+            "<em>Learning Augmented Combinatorial Auctions</em>", I had the privilege of being advised by
+            Professor <a href="https://www.softlab.ntua.gr/~fotakis/" target="_blank" rel="noopener">Dimitris Fotakis</a>
+            (NTUA) and Professor <a href="https://www.cs.drexel.edu/~gkatz/" target="_blank" rel="noopener">Vasilis Gkatzelis</a>
+            (Drexel University).
+          </p>
+
+          <div class="about__details">
+            <div class="about__detail">
+              <span class="about__detail-icon">🎓</span>
+              <div class="about__detail-content">
+                <span class="about__detail-label">Program</span>
+                <span class="about__detail-value">Ph.D. Computing & Data Science</span>
+              </div>
+            </div>
+            <div class="about__detail">
+              <span class="about__detail-icon">🏛️</span>
+              <div class="about__detail-content">
+                <span class="about__detail-label">University</span>
+                <span class="about__detail-value">Boston University</span>
+              </div>
+            </div>
+            <div class="about__detail">
+              <span class="about__detail-icon">📧</span>
+              <div class="about__detail-content">
+                <span class="about__detail-label">Email</span>
+                <span class="about__detail-value">tsilivis [at] bu [dot] edu</span>
+              </div>
+            </div>
+            <div class="about__detail">
+              <span class="about__detail-icon">📍</span>
+              <div class="about__detail-content">
+                <span class="about__detail-label">Office</span>
+                <span class="about__detail-value">CDS 1321</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RESEARCH ==================== -->
+  <section class="section" id="research">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">// research</span>
+        <h2 class="section__title">Publications &amp; Papers</h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <!-- Under Review -->
+      <div class="research__category reveal">
+        <h3 class="research__category-title">Under Review <span class="badge">2 papers</span></h3>
+
+        <div class="paper-card">
+          <h4 class="paper-card__title">Mechanism Design with Predictions</h4>
+          <p class="paper-card__authors">with Kira Goldner and Divyarthi Mohan</p>
+        </div>
+
+        <div class="paper-card">
+          <h4 class="paper-card__title">Procurement Auctions with Budgets</h4>
+          <p class="paper-card__authors">with Alon Eden, Kira Goldner, and Eldar Kerner</p>
+        </div>
+      </div>
+
+      <!-- Published -->
+      <div class="research__category reveal">
+        <h3 class="research__category-title">Published &amp; Completed</h3>
+
+        <div class="paper-card">
+          <h4 class="paper-card__title">Bilateral Trade with Interdependent Values: Information vs. Approximation</h4>
+          <p class="paper-card__authors">with Shahar Dobzinski, Alon Eden, Kira Goldner, and Ariel Shaulker</p>
+          <div class="paper-card__meta">
+            <span class="paper-card__venue">EC 2025</span>
+            <a class="paper-card__link" href="https://arxiv.org/abs/2506.23896" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              arXiv
+            </a>
+          </div>
+        </div>
+
+        <div class="paper-card">
+          <h4 class="paper-card__title">Learning Augmented Combinatorial Auctions</h4>
+          <p class="paper-card__authors">with Dimitris Fotakis and Vasilis Gkatzelis</p>
+          <div class="paper-card__meta">
+            <span class="paper-card__venue">NTUA Thesis · 2022</span>
+            <a class="paper-card__link" href="assets/thesis.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TEACHING ==================== -->
+  <section class="section section--alt" id="teaching">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">// teaching</span>
+        <h2 class="section__title">Teaching Experience</h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="teaching__list reveal">
+        <div class="teaching-card">
+          <span class="teaching-card__year">Spring 2026</span>
+          <div class="teaching-card__divider"></div>
+          <div class="teaching-card__info">
+            <div class="teaching-card__name">
+              <a href="https://www.kiragoldner.com/teaching/DS320/index.html" target="_blank" rel="noopener">DS 320: Algorithms for Data Science</a>
+            </div>
+            <div class="teaching-card__role">Teaching Assistant · Boston University</div>
+          </div>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card__year">Fall '21, '22</span>
+          <div class="teaching-card__divider"></div>
+          <div class="teaching-card__info">
+            <div class="teaching-card__name">Algorithms and Complexity</div>
+            <div class="teaching-card__role">Teaching Assistant · National Technical University of Athens</div>
+          </div>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card__year">Spring 2022</span>
+          <div class="teaching-card__divider"></div>
+          <div class="teaching-card__info">
+            <div class="teaching-card__name">Discrete Mathematics</div>
+            <div class="teaching-card__role">Teaching Assistant · National Technical University of Athens</div>
+          </div>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card__year">Fall 2022</span>
+          <div class="teaching-card__divider"></div>
+          <div class="teaching-card__info">
+            <div class="teaching-card__name">Computer Programming</div>
+            <div class="teaching-card__role">Teaching Assistant · National Technical University of Athens</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRESENTATIONS ==================== -->
+  <section class="section" id="presentations">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">// talks &amp; presentations</span>
+        <h2 class="section__title">Selected Talks</h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <!-- 2026 -->
+      <div class="presentations__year-group reveal">
+        <div class="presentations__year">2026</div>
+
+        <div class="presentation-item">
+          <div class="presentation-item__content">
+            <div class="presentation-item__title">Bilateral Trade with Interdependent Values</div>
+            <div class="presentation-item__venue">Northeastern Theory Seminar · Feb 25, 2026</div>
+          </div>
+          <div class="presentation-item__links">
+            <a href="assets/slides/bilateral-trade-northeastern-2026.pdf" target="_blank" rel="noopener">slides</a>
+          </div>
+        </div>
+
+        <div class="presentation-item">
+          <div class="presentation-item__content">
+            <div class="presentation-item__title">Bilateral Trade with Interdependent Values</div>
+            <div class="presentation-item__venue">Harvard EconCS Seminar · Feb 20, 2026</div>
+          </div>
+          <div class="presentation-item__links">
+            <a href="assets/slides/bilateral-trade-harvard-2026.pdf" target="_blank" rel="noopener">slides</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="presentations__year-group reveal">
+        <div class="presentations__year">2025</div>
+
+        <div class="presentation-item">
+          <div class="presentation-item__content">
+            <div class="presentation-item__title">Bilateral Trade with Interdependent Values</div>
+            <div class="presentation-item__venue">Qualifying Exam Presentation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="presentations__year-group reveal">
+        <div class="presentations__year">2024</div>
+
+        <div class="presentation-item">
+          <div class="presentation-item__content">
+            <div class="presentation-item__title">Secretary Problem and Prophet Inequalities — Quick Introduction</div>
+            <div class="presentation-item__venue">DS 592: Randomized Algorithms</div>
+          </div>
+          <div class="presentation-item__links">
+            <a href="assets/slides/secretary-prophet-2024.pdf" target="_blank" rel="noopener">slides</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="presentations__year-group reveal">
+        <div class="presentations__year">2022</div>
+
+        <div class="presentation-item">
+          <div class="presentation-item__content">
+            <div class="presentation-item__title">Learning Augmented Combinatorial Auctions</div>
+            <div class="presentation-item__venue">NTUA Thesis Presentation</div>
+          </div>
+          <div class="presentation-item__links">
+            <a href="assets/slides/thesis-2022.pdf" target="_blank" rel="noopener">slides</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="presentations__year-group reveal">
+        <div class="presentations__year">2021</div>
+
+        <div class="presentation-item">
+          <div class="presentation-item__content">
+            <div class="presentation-item__title">Improved Truthful Mechanisms for Subadditive Combinatorial Auctions</div>
+            <div class="presentation-item__venue">Drexel Theory Group</div>
+          </div>
+          <div class="presentation-item__links">
+            <a href="assets/slides/subadditive-drexel-2021.pdf" target="_blank" rel="noopener">slides</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="section__header reveal" style="margin-top: 4rem;">
+        <span class="section__label">// notes</span>
+        <h2 class="section__title" style="font-size: 1.5rem;">Academic Notes</h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="reveal">
+        <div class="notes-card">
+          <span class="notes-card__icon">📝</span>
+          <div class="notes-card__info">
+            <div class="notes-card__title">Prophet Inequalities and Secretary Problem</div>
+            <div class="notes-card__detail">DS 592: Randomized Algorithms · 2024</div>
+          </div>
+          <a href="assets/notes/prophet-secretary-2024.pdf" class="btn btn--outline" style="margin-left: auto; padding: 0.5rem 1.25rem; font-size: 0.82rem;" target="_blank" rel="noopener">
+            PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PERSONAL ==================== -->
+  <section class="section section--alt" id="personal">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label">// beyond research</span>
+        <h2 class="section__title">About Me</h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="reveal">
+        <p class="personal__intro">
+          I have spent most of my life in <strong>Athens</strong> and have enjoyed most of my summers in <strong>Kalamata</strong>.
+          I enjoy traveling, puzzles (jigsaw and mathematical ones), walking, exercising, football, and a bunch of other cool stuff.
+          I have two wonderful cats in Greece, <strong>Mavroula</strong> (Μαυρούλα) and <strong>Hadiaris</strong> (Χαδιάρης). 🐈‍⬛
+        </p>
+      </div>
+
+      <div class="personal__gallery reveal">
+        <div class="gallery-card">
+          <img src="assets/gallery/gelato.jpg" alt="Gelato in Cinque Terre" class="gallery-card__image" />
+          <div class="gallery-card__caption">Gelato — Cinque Terre</div>
+        </div>
+        <div class="gallery-card">
+          <img src="assets/gallery/cats.jpg" alt="Hadiaris and Mavroula" class="gallery-card__image" />
+          <div class="gallery-card__caption">Hadiaris &amp; Mavroula</div>
+        </div>
+        <div class="gallery-card">
+          <img src="assets/gallery/sunset.jpg" alt="Sunset in Kitries" class="gallery-card__image" />
+          <div class="gallery-card__caption">Sunset — Kitries</div>
+        </div>
+        <div class="gallery-card">
+          <img src="assets/gallery/puzzles.jpg" alt="Some Puzzles" class="gallery-card__image" />
+          <div class="gallery-card__caption">Some Puzzles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__links">
+        <a href="mailto:tsilivis@bu.edu">Email</a>
+        <a href="https://github.com/Tsiliii" target="_blank" rel="noopener">GitHub</a>
+        <a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+      <p class="footer__copy">&copy; 2026 Thodoris Tsilivis. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
