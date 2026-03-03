@@ -33,7 +33,7 @@
   <!-- ==================== NAVIGATION ==================== -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#hero" class="nav__brand">Thodoris Tsilivis<span>.</span></a>
+      <a href="#about" class="nav__brand">Thodoris Tsilivis<span>.</span></a>
       <ul class="nav__links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
@@ -49,26 +49,7 @@
     </div>
   </nav>
 
-  <!-- ==================== HERO ==================== -->
-  <section class="hero" id="hero">
-    <canvas class="hero__canvas" id="heroCanvas"></canvas>
-    <div class="hero__content">
-      <p class="hero__greeting">Hi, I'm</p>
-      <h1 class="hero__name">Thodoris <span class="accent">Tsilivis</span></h1>
-      <p class="hero__subtitle" style="max-width: 600px; margin: 1.5rem auto 0; font-size: 1.15rem; line-height: 1.6;">
-        I am a third-year PhD Student in Computing &amp; Data Science at Boston University, advised by <a
-          href="https://www.kiragoldner.com/" target="_blank" rel="noopener">Kira Goldner</a>. My research focuses on
-        algorithmic game theory, mechanism design, and randomized algorithms.
-      </p>
-    </div>
-    <div class="hero__scroll-hint">
-      <span>scroll</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </div>
-  </section>
+
 
   <!-- ==================== ABOUT ==================== -->
   <section class="section section--alt" id="about">
@@ -81,11 +62,12 @@
 
       <div class="about__grid reveal">
         <!-- Photo -->
-        <div class="about__photo-wrapper">
-          <img src="assets/profile.jpg" alt="Thodoris Tsilivis" class="about__photo" />
-          <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
-            <a href="assets/cv.pdf" class="btn btn--primary" target="_blank"
-              style="width: 100%; justify-content: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; margin-left: 1rem;">
+          <div class="about__photo-wrapper">
+            <img src="assets/profile.jpg" alt="Thodoris Tsilivis" class="about__photo" />
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="assets/cv.pdf" class="btn btn--primary" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
