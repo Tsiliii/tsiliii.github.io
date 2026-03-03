@@ -70,6 +70,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // ---------- Image Modal ----------
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("modalCaption");
+    const closeBtn = document.querySelector(".modal__close");
+    const galleryImages = document.querySelectorAll(".gallery-card__image");
+
+    if (modal && modalImg && closeBtn && galleryImages.length > 0) {
+        galleryImages.forEach(img => {
+            img.addEventListener("click", function () {
+                modal.classList.add("show");
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            });
+        });
+
+        closeBtn.addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("show");
+            }
+        });
+    }
+
     // ---------- Initial call ----------
     highlightNav();
 });
