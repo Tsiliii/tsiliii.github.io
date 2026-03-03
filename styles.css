@@ -375,6 +375,7 @@ img {
   width: 280px;
   height: 340px;
   object-fit: cover;
+  object-position: 38% 50%;
   border-radius: var(--border-radius);
   border: 2px solid var(--border-accent);
   position: relative;
