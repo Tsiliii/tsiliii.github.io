@@ -190,7 +190,25 @@
 
     .prob-num { font-family: var(--font-mono); font-size: .7rem; color: var(--text-muted); font-weight: 500; }
     .prob-title { font-weight: 600; font-size: .88rem; color: var(--text); }
-    .prob-sub { font-size: .73rem; color: var(--text-sec); margin-top: 2px; }
+    .prob-sub { font-size: .73rem; color: var(--text-sec); margin-top: 5px; display: none; }
+
+    /* Connection toggle */
+    .conn-toggle {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: .66rem; font-weight: 600; font-family: var(--font-mono);
+      color: var(--accent); background: var(--accent-dim);
+      border: 1px solid var(--border-acc); border-radius: 100px;
+      padding: 1px 9px; margin-top: 4px;
+      cursor: pointer; user-select: none;
+      transition: background var(--ease), color var(--ease), border-color var(--ease);
+    }
+    .conn-toggle::before { content: '↳ '; opacity: .7; }
+    .conn-toggle:hover { background: rgba(42,161,152,.22); }
+    .conn-toggle.open {
+      background: var(--accent); color: #fff;
+      border-color: var(--accent);
+    }
+    .conn-toggle.open::before { content: '↑ '; }
     .prob-tag {
       font-size: .67rem; white-space: nowrap; color: var(--text-sec);
       background: var(--bg-alt); border: 1px solid var(--border);
@@ -1221,6 +1239,23 @@
     if (!wrap) return;
     wrap.classList.toggle('open');
   }
+
+  // Connection toggles — insert a pill before every .prob-sub
+  document.querySelectorAll('.prob-sub').forEach(sub => {
+    const toggle = document.createElement('span');
+    toggle.className = 'conn-toggle';
+    toggle.textContent = 'Connection';
+    toggle.setAttribute('title', 'Show how this problem connects to the lecture material');
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const opening = sub.style.display === 'none' || sub.style.display === '';
+      sub.style.display = opening ? 'block' : 'none';
+      toggle.classList.toggle('open', opening);
+      toggle.textContent = opening ? 'Connection' : 'Connection';
+    });
+    sub.parentNode.insertBefore(toggle, sub);
+  });
 </script>
 </body>
 </html>
