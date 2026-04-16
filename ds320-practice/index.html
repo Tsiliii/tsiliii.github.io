@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DS 320 · LeetCode Practice Problems · Thodoris Tsilivis</title>
-  <meta name="description" content="LeetCode problems mapped lecture-by-lecture to DS 320: Algorithms for Data Science at Boston University, Spring 2026. Curated by the course TA." />
+  <meta name="description"
+    content="LeetCode problems mapped lecture-by-lecture to DS 320: Algorithms for Data Science at Boston University, Spring 2026. Curated by the course TA." />
   <meta name="author" content="Thodoris Tsilivis" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232aa198'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='60' font-weight='bold' fill='white'>T</text></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232aa198'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='60' font-weight='bold' fill='white'>T</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
 
   <style>
     /* ── Design tokens: Solarized Light (matches tsiliii.github.io) ── */
     :root {
-      --bg:          #fdf6e3;
-      --bg-alt:      #eee8d5;
-      --bg-card:     #ffffff;
+      --bg: #fdf6e3;
+      --bg-alt: #eee8d5;
+      --bg-card: #ffffff;
       --bg-card-hov: #f5efdc;
-      --text:        #073642;
-      --text-sec:    #586e75;
-      --text-muted:  #93a1a1;
-      --accent:      #2aa198;
-      --accent-hov:  #1a847d;
-      --accent-dim:  rgba(42,161,152,.12);
-      --accent-glow: rgba(42,161,152,.25);
-      --border:      rgba(0,0,0,.08);
-      --border-acc:  rgba(42,161,152,.3);
+      --text: #073642;
+      --text-sec: #586e75;
+      --text-muted: #93a1a1;
+      --accent: #2aa198;
+      --accent-hov: #1a847d;
+      --accent-dim: rgba(42, 161, 152, .12);
+      --accent-glow: rgba(42, 161, 152, .25);
+      --border: rgba(0, 0, 0, .08);
+      --border-acc: rgba(42, 161, 152, .3);
 
       /* Solarized palette for unit accents */
-      --u1: #268bd2;   /* blue   */
-      --u2: #6c71c4;   /* violet */
-      --u3: #2aa198;   /* teal   */
-      --u4: #cb4b16;   /* orange */
-      --u5: #859900;   /* green  */
-      --u6: #dc322f;   /* red    */
-      --u7: #b58900;   /* yellow */
-      --ux: #93a1a1;   /* extra  */
+      --u1: #268bd2;
+      /* blue   */
+      --u2: #6c71c4;
+      /* violet */
+      --u3: #2aa198;
+      /* teal   */
+      --u4: #cb4b16;
+      /* orange */
+      --u5: #859900;
+      /* green  */
+      --u6: #dc322f;
+      /* red    */
+      --u7: #b58900;
+      /* yellow */
+      --ux: #93a1a1;
+      /* extra  */
 
-      --easy-text:   #859900; --easy-bg:   rgba(133,153,0,.1);   --easy-border:   rgba(133,153,0,.35);
-      --medium-text: #b58900; --medium-bg: rgba(181,137,0,.1);   --medium-border: rgba(181,137,0,.35);
-      --hard-text:   #dc322f; --hard-bg:   rgba(220,50,47,.08);  --hard-border:   rgba(220,50,47,.32);
+      --easy-text: #859900;
+      --easy-bg: rgba(133, 153, 0, .1);
+      --easy-border: rgba(133, 153, 0, .35);
+      --medium-text: #b58900;
+      --medium-bg: rgba(181, 137, 0, .1);
+      --medium-border: rgba(181, 137, 0, .35);
+      --hard-text: #dc322f;
+      --hard-bg: rgba(220, 50, 47, .08);
+      --hard-border: rgba(220, 50, 47, .32);
 
       --font-body: 'Inter', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -48,46 +67,114 @@
       --radius: 12px;
       --radius-sm: 8px;
       --nav-h: 60px;
-      --ease: 0.2s cubic-bezier(.4,0,.2,1);
+      --ease: 0.2s cubic-bezier(.4, 0, .2, 1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
-    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent); text-decoration: none; transition: color var(--ease); }
-    a:hover { color: var(--accent-hov); }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--ease);
+    }
+
+    a:hover {
+      color: var(--accent-hov);
+    }
 
     /* ── Nav ───────────────────────────────────────────────────── */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       height: var(--nav-h);
-      background: rgba(253,246,227,.92);
+      background: rgba(253, 246, 227, .92);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-inner {
-      max-width: var(--max); margin: 0 auto;
-      display: flex; align-items: center; gap: 12px;
-      height: 100%; padding: 0 24px;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+      padding: 0 24px;
     }
+
     .nav-brand {
-      font-weight: 700; font-size: .9rem; color: var(--text);
-      white-space: nowrap; text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--text);
+      white-space: nowrap;
+      text-decoration: none;
     }
-    .nav-brand span { color: var(--accent); }
-    .nav-pills { display: flex; gap: 2px; list-style: none; overflow-x: auto; scrollbar-width: none; }
-    .nav-pills::-webkit-scrollbar { display: none; }
+
+    .nav-brand span {
+      color: var(--accent);
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 2px;
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-pills::-webkit-scrollbar {
+      display: none;
+    }
+
     .nav-pills a {
-      font-size: .76rem; font-weight: 500; color: var(--text-sec);
-      padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+      font-size: .76rem;
+      font-weight: 500;
+      color: var(--text-sec);
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
       transition: background var(--ease), color var(--ease);
     }
-    .nav-pills a:hover { color: var(--text); background: var(--accent-dim); }
-    .nav-back {
-      margin-left: auto; font-size: .76rem; color: var(--text-muted);
-      white-space: nowrap; display: flex; align-items: center; gap: 5px;
+
+    .nav-pills a:hover {
+      color: var(--text);
+      background: var(--accent-dim);
     }
-    .nav-back svg { width: 13px; height: 13px; }
+
+    .nav-back {
+      margin-left: auto;
+      font-size: .76rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-back svg {
+      width: 13px;
+      height: 13px;
+    }
 
     /* ── Hero ───────────────────────────────────────────────────── */
     .hero {
@@ -96,1166 +183,1991 @@
       padding: 64px 24px 56px;
       text-align: center;
     }
+
     .section__label {
-      font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
-      color: var(--accent); letter-spacing: .08em;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: .08em;
     }
+
     .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700;
-      letter-spacing: -.02em; color: var(--text); margin: 10px 0 12px;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin: 10px 0 12px;
     }
-    .hero-sub { font-size: .98rem; color: var(--text-sec); max-width: 480px; margin: 0 auto 28px; }
-    .legend { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 6px; font-size: .78rem; color: var(--text-sec); }
-    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    .hero-sub {
+      font-size: .98rem;
+      color: var(--text-sec);
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      color: var(--text-sec);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
 
     /* ── Layout ─────────────────────────────────────────────────── */
-    main { max-width: var(--max); margin: 0 auto; padding: 52px 24px 88px; }
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 52px 24px 88px;
+    }
 
     /* ── Stats ──────────────────────────────────────────────────── */
-    .stats { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin-bottom: 44px; }
-    @media (max-width:640px) { .stats { grid-template-columns: repeat(3,1fr); } }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+
+    @media (max-width:640px) {
+      .stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     .stat {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 18px 12px 14px; text-align: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 12px 14px;
+      text-align: center;
       transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
     }
-    .stat:hover { border-color: var(--border-acc); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(42,161,152,.12); }
-    .stat-n { font-size: 1.7rem; font-weight: 700; line-height: 1; margin-bottom: 5px; }
-    .stat-l { font-size: .67rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); font-weight: 500; }
+
+    .stat:hover {
+      border-color: var(--border-acc);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(42, 161, 152, .12);
+    }
+
+    .stat-n {
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .stat-l {
+      font-size: .67rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
 
     /* ── Info box ───────────────────────────────────────────────── */
     .infobox {
-      background: var(--bg-alt); border: 1px solid var(--border);
-      border-left: 3px solid var(--accent); border-radius: var(--radius);
-      padding: 16px 20px; margin-bottom: 48px;
-      font-size: .85rem; color: var(--text-sec); line-height: 1.7;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 48px;
+      font-size: .85rem;
+      color: var(--text-sec);
+      line-height: 1.7;
     }
-    .infobox strong { color: var(--text); }
+
+    .infobox strong {
+      color: var(--text);
+    }
 
     /* ── Unit ───────────────────────────────────────────────────── */
-    .unit { margin-bottom: 56px; scroll-margin-top: 80px; }
-    .unit-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 6px; }
-    .unit-bar { width: 4px; border-radius: 2px; flex-shrink: 0; height: 52px; margin-top: 4px; }
-    .unit-info h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -.015em; margin-bottom: 4px; }
-    .unit-num { font-family: var(--font-mono); font-size: .85em; color: var(--text-muted); font-weight: 400; margin-right: 6px; }
-    .unit-desc { font-size: .83rem; color: var(--text-sec); margin-bottom: 10px; }
+    .unit {
+      margin-bottom: 56px;
+      scroll-margin-top: 80px;
+    }
+
+    .unit-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 6px;
+    }
+
+    .unit-bar {
+      width: 4px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      height: 52px;
+      margin-top: 4px;
+    }
+
+    .unit-info h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -.015em;
+      margin-bottom: 4px;
+    }
+
+    .unit-num {
+      font-family: var(--font-mono);
+      font-size: .85em;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-right: 6px;
+    }
+
+    .unit-desc {
+      font-size: .83rem;
+      color: var(--text-sec);
+      margin-bottom: 10px;
+    }
 
     /* ── Lecture group ──────────────────────────────────────────── */
-    .lec-group { margin-bottom: 6px; }
+    .lec-group {
+      margin-bottom: 6px;
+    }
+
     .lec-label {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 10px 14px; cursor: pointer; border-radius: var(--radius-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
       transition: background var(--ease);
     }
-    .lec-label:hover { background: var(--accent-dim); }
-    .lec-chip {
-      font-family: var(--font-mono); font-size: .68rem; font-weight: 600;
-      padding: 2px 9px; border-radius: 100px; border: 1.5px solid;
-      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+
+    .lec-label:hover {
+      background: var(--accent-dim);
     }
+
+    .lec-chip {
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 100px;
+      border: 1.5px solid;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
     .lec-text {}
-    .lec-title { font-size: .88rem; font-weight: 600; color: var(--text); }
-    .lec-subtitle { font-size: .76rem; color: var(--text-sec); margin-top: 1px; }
+
+    .lec-title {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .lec-subtitle {
+      font-size: .76rem;
+      color: var(--text-sec);
+      margin-top: 1px;
+    }
 
     /* ── Problem rows ───────────────────────────────────────────── */
-    .problems { display: flex; flex-direction: column; gap: 5px; padding: 8px 0 4px 20px; }
+    .problems {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px 0 4px 20px;
+    }
 
     a.prob {
       display: grid;
       grid-template-columns: 48px 1fr auto auto auto;
-      align-items: center; gap: 14px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 12px 18px;
-      text-decoration: none; color: var(--text);
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 18px;
+      text-decoration: none;
+      color: var(--text);
       transition: border-color var(--ease), background var(--ease), transform var(--ease), box-shadow var(--ease);
       position: relative;
     }
+
     a.prob::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px; border-radius: 3px 0 0 3px;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 3px 0 0 3px;
       background: var(--row-color, var(--accent));
-      opacity: 0; transition: opacity var(--ease);
+      opacity: 0;
+      transition: opacity var(--ease);
     }
+
     a.prob:hover {
-      border-color: var(--border-acc); background: var(--bg-card-hov);
+      border-color: var(--border-acc);
+      background: var(--bg-card-hov);
       transform: translateX(3px);
-      box-shadow: 0 2px 12px rgba(42,161,152,.1);
+      box-shadow: 0 2px 12px rgba(42, 161, 152, .1);
     }
-    a.prob:hover::before { opacity: 1; }
+
+    a.prob:hover::before {
+      opacity: 1;
+    }
+
     @media (max-width:600px) {
-      a.prob { grid-template-columns: 1fr auto auto; }
-      .prob-num, .prob-tag { display: none; }
+      a.prob {
+        grid-template-columns: 1fr auto auto;
+      }
+
+      .prob-num,
+      .prob-tag {
+        display: none;
+      }
     }
 
-    .prob-num { font-family: var(--font-mono); font-size: .7rem; color: var(--text-muted); font-weight: 500; }
-    .prob-title { font-weight: 600; font-size: .88rem; color: var(--text); }
-    .prob-sub { font-size: .73rem; color: var(--text-sec); margin-top: 5px; display: none; }
+    .prob-num {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
 
-    /* Connection toggle */
+    .prob-title {
+      font-weight: 600;
+      font-size: .88rem;
+      color: var(--text);
+    }
+
+    .prob-sub {
+      font-size: .73rem;
+      color: var(--text-sec);
+      margin-top: 5px;
+      display: none;
+    }
+
+    /* Help toggle */
     .conn-toggle {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: .66rem; font-weight: 600; font-family: var(--font-mono);
-      color: var(--accent); background: var(--accent-dim);
-      border: 1px solid var(--border-acc); border-radius: 100px;
-      padding: 1px 9px; margin-top: 4px;
-      cursor: pointer; user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .66rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-acc);
+      border-radius: 100px;
+      padding: 1px 9px;
+      margin-top: 4px;
+      cursor: pointer;
+      user-select: none;
       transition: background var(--ease), color var(--ease), border-color var(--ease);
     }
-    .conn-toggle::before { content: '↳ '; opacity: .7; }
-    .conn-toggle:hover { background: rgba(42,161,152,.22); }
+
+    .conn-toggle::before {
+      content: '↳ ';
+      opacity: .7;
+    }
+
+    .conn-toggle:hover {
+      background: rgba(42, 161, 152, .22);
+    }
+
     .conn-toggle.open {
-      background: var(--accent); color: #fff;
+      background: var(--accent);
+      color: #fff;
       border-color: var(--accent);
     }
-    .conn-toggle.open::before { content: '↑ '; }
+
+    .conn-toggle.open::before {
+      content: '↑ ';
+    }
+
     .prob-tag {
-      font-size: .67rem; white-space: nowrap; color: var(--text-sec);
-      background: var(--bg-alt); border: 1px solid var(--border);
-      padding: 2px 8px; border-radius: 100px;
+      font-size: .67rem;
+      white-space: nowrap;
+      color: var(--text-sec);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 100px;
     }
+
     .diff {
-      font-family: var(--font-mono); font-size: .68rem; font-weight: 600;
-      padding: 2px 9px; border-radius: 100px; border: 1px solid; white-space: nowrap;
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 100px;
+      border: 1px solid;
+      white-space: nowrap;
     }
-    .easy   { color: var(--easy-text);   background: var(--easy-bg);   border-color: var(--easy-border); }
-    .medium { color: var(--medium-text); background: var(--medium-bg); border-color: var(--medium-border); }
-    .hard   { color: var(--hard-text);   background: var(--hard-bg);   border-color: var(--hard-border); }
-    .ext-arrow { color: var(--text-muted); font-size: .75rem; }
+
+    .easy {
+      color: var(--easy-text);
+      background: var(--easy-bg);
+      border-color: var(--easy-border);
+    }
+
+    .medium {
+      color: var(--medium-text);
+      background: var(--medium-bg);
+      border-color: var(--medium-border);
+    }
+
+    .hard {
+      color: var(--hard-text);
+      background: var(--hard-bg);
+      border-color: var(--hard-border);
+    }
+
+    .ext-arrow {
+      color: var(--text-muted);
+      font-size: .75rem;
+    }
 
     /* ── Extra material accordion ───────────────────────────────── */
-    .extra-wrap { margin: 10px 0 16px; }
+    .extra-wrap {
+      margin: 10px 0 16px;
+    }
+
     .extra-toggle {
-      display: flex; align-items: center; gap: 10px; cursor: pointer;
-      padding: 9px 14px; border-radius: var(--radius-sm);
-      background: var(--bg-alt); border: 1px dashed var(--border-acc);
-      font-size: .8rem; font-weight: 600; color: var(--text-sec);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-alt);
+      border: 1px dashed var(--border-acc);
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-sec);
       transition: background var(--ease);
       user-select: none;
     }
-    .extra-toggle:hover { background: var(--accent-dim); }
-    .extra-toggle .et-icon {
-      width: 18px; height: 18px; flex-shrink: 0;
-      border-radius: 50%; background: var(--accent-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; line-height: 1;
-      color: var(--accent); font-style: normal;
+
+    .extra-toggle:hover {
+      background: var(--accent-dim);
     }
-    .extra-toggle .et-chevron { margin-left: auto; color: var(--text-muted); font-size: .75rem; transition: transform var(--ease); }
-    .extra-wrap.open .et-chevron { transform: rotate(180deg); }
-    .extra-body { display: none; padding-top: 6px; }
-    .extra-wrap.open .extra-body { display: block; }
-    .extra-note { font-size: .78rem; color: var(--text-muted); padding: 6px 14px 10px; font-style: italic; }
+
+    .extra-toggle .et-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      line-height: 1;
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .extra-toggle .et-chevron {
+      margin-left: auto;
+      color: var(--text-muted);
+      font-size: .75rem;
+      transition: transform var(--ease);
+    }
+
+    .extra-wrap.open .et-chevron {
+      transform: rotate(180deg);
+    }
+
+    .extra-body {
+      display: none;
+      padding-top: 6px;
+    }
+
+    .extra-wrap.open .extra-body {
+      display: block;
+    }
+
+    .extra-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+      padding: 6px 14px 10px;
+      font-style: italic;
+    }
 
     /* ── Divider ────────────────────────────────────────────────── */
-    hr.div { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    hr.div {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
 
     /* ── Beyond Curriculum ──────────────────────────────────────── */
     .beyond-header {
-      display: flex; align-items: center; gap: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin-bottom: 20px;
     }
+
     .beyond-badge {
-      font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
-      padding: 3px 12px; border-radius: 100px;
-      color: var(--text-sec); background: var(--bg-alt);
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 100px;
+      color: var(--text-sec);
+      background: var(--bg-alt);
       border: 1px solid var(--border);
     }
-    .beyond-intro {
-      font-size: .85rem; color: var(--text-sec); line-height: 1.7;
-      margin-bottom: 32px;
-      background: var(--bg-alt); border: 1px solid var(--border);
-      border-left: 3px solid var(--text-muted);
-      border-radius: var(--radius); padding: 16px 20px;
-    }
-    .beyond-intro strong { color: var(--text); }
 
-    .btopic { margin-bottom: 32px; }
-    .btopic-head {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+    .beyond-intro {
+      font-size: .85rem;
+      color: var(--text-sec);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text-muted);
+      border-radius: var(--radius);
+      padding: 16px 20px;
     }
+
+    .beyond-intro strong {
+      color: var(--text);
+    }
+
+    .btopic {
+      margin-bottom: 32px;
+    }
+
+    .btopic-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
     .btopic-icon {
-      width: 32px; height: 32px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
       flex-shrink: 0;
     }
-    .btopic-title { font-weight: 700; font-size: 1rem; color: var(--text); }
-    .btopic-why { font-size: .78rem; color: var(--text-sec); margin-top: 1px; }
+
+    .btopic-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .btopic-why {
+      font-size: .78rem;
+      color: var(--text-sec);
+      margin-top: 1px;
+    }
 
     /* ── Note box ───────────────────────────────────────────────── */
     .notebox {
-      background: var(--bg-alt); border: 1px solid var(--border);
-      border-left: 3px solid var(--u2); border-radius: var(--radius);
-      padding: 16px 20px; margin-bottom: 48px;
-      font-size: .84rem; color: var(--text-sec); line-height: 1.7;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--u2);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 48px;
+      font-size: .84rem;
+      color: var(--text-sec);
+      line-height: 1.7;
     }
-    .notebox strong { color: var(--text); }
-    .notebox a { color: var(--accent); }
-    .notebox a:hover { color: var(--accent-hov); }
+
+    .notebox strong {
+      color: var(--text);
+    }
+
+    .notebox a {
+      color: var(--accent);
+    }
+
+    .notebox a:hover {
+      color: var(--accent-hov);
+    }
 
     /* ── Footer ─────────────────────────────────────────────────── */
     footer {
-      border-top: 1px solid var(--border); padding: 28px 24px;
-      text-align: center; font-size: .78rem; color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: .78rem;
+      color: var(--text-muted);
     }
-    footer a { color: var(--accent); }
-    footer p + p { margin-top: 6px; }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    footer p+p {
+      margin-top: 6px;
+    }
   </style>
 </head>
+
 <body>
 
-<!-- ── Nav ──────────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-brand" href="https://tsiliii.github.io">Thodoris Tsilivis<span>.</span></a>
-    <ul class="nav-pills">
-      <li><a href="#u1">L1–2</a></li>
-      <li><a href="#u2">L3–5</a></li>
-      <li><a href="#u3">L6–9</a></li>
-      <li><a href="#u4">L10–12</a></li>
-      <li><a href="#u5">L13–16</a></li>
-      <li><a href="#u6">L17</a></li>
-      <li><a href="#u7">L18–22</a></li>
-      <li><a href="#beyond">Beyond</a></li>
-    </ul>
-    <a class="nav-back" href="https://tsiliii.github.io#teaching">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Back to site
-    </a>
-  </div>
-</nav>
+  <!-- ── Nav ──────────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="https://tsiliii.github.io">Thodoris Tsilivis<span>.</span></a>
+      <ul class="nav-pills">
+        <li><a href="#u1">L1–2</a></li>
+        <li><a href="#u2">L3–5</a></li>
+        <li><a href="#u3">L6–9</a></li>
+        <li><a href="#u4">L10–12</a></li>
+        <li><a href="#u5">L13–16</a></li>
+        <li><a href="#u6">L17</a></li>
+        <li><a href="#u7">L18–22</a></li>
+        <li><a href="#beyond">Beyond</a></li>
+      </ul>
+      <a class="nav-back" href="https://tsiliii.github.io#teaching">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Back to site
+      </a>
+    </div>
+  </nav>
 
-<!-- ── Hero ─────────────────────────────────────────────────── -->
-<div class="hero">
-  <div class="section__label">// DS 320 · Algorithms for Data Science · Spring 2026</div>
-  <h1>LeetCode Practice Problems</h1>
-  <p class="hero-sub">Problems mapped lecture-by-lecture. Each one requires <em>only</em> what has been taught up to that point — no forward knowledge needed.</p>
-  <div class="legend">
-    <div class="legend-item"><span class="legend-dot" style="background:var(--easy-text)"></span>Easy — builds intuition</div>
-    <div class="legend-item"><span class="legend-dot" style="background:var(--medium-text)"></span>Medium — exam-level</div>
-    <div class="legend-item"><span class="legend-dot" style="background:var(--hard-text)"></span>Hard — go beyond</div>
-  </div>
-</div>
-
-<main>
-
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat"><div class="stat-n" style="color:var(--accent)" id="sTotal">50</div><div class="stat-l">Problems</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--easy-text)" id="sEasy">14</div><div class="stat-l">Easy</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--medium-text)" id="sMed">24</div><div class="stat-l">Medium</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--hard-text)" id="sHard">12</div><div class="stat-l">Hard</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--u2)" id="sLec">22</div><div class="stat-l">Lectures</div></div>
+  <!-- ── Hero ─────────────────────────────────────────────────── -->
+  <div class="hero">
+    <div class="section__label">// DS 320 · Algorithms for Data Science · Spring 2026</div>
+    <h1>LeetCode Practice Problems</h1>
+    <p class="hero-sub">Problems mapped lecture-by-lecture. Each one requires <em>only</em> what has been taught up to
+      that point — no forward knowledge needed.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:var(--easy-text)"></span>Easy — builds
+        intuition</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--medium-text)"></span>Medium — exam-level
+      </div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--hard-text)"></span>Hard — go beyond
+      </div>
+    </div>
   </div>
 
-  <div class="infobox">
-    <strong>How to use this page:</strong>
-    Problems are grouped by the exact lecture that teaches what you need to solve them.
-    The small tag is a one-word nudge toward the key idea — no hints about the solution.
-    Collapsed <em>"Extra"</em> sections contain closely related problems that don't perfectly match a single lecture.
-    Click any row to open on LeetCode.
-  </div>
+  <main>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 1: L1–2 Sorting -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u1">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u1)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">01</span>Asymptotic Analysis &amp; Sorting</h2>
-        <div class="unit-desc">Big-O / Ω / Θ · Insertion Sort · Loop invariants · Comparison-based lower bound</div>
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--accent)" id="sTotal">50</div>
+        <div class="stat-l">Problems</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--easy-text)" id="sEasy">14</div>
+        <div class="stat-l">Easy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--medium-text)" id="sMed">24</div>
+        <div class="stat-l">Medium</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--hard-text)" id="sHard">12</div>
+        <div class="stat-l">Hard</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--u2)" id="sLec">22</div>
+        <div class="stat-l">Lectures</div>
       </div>
     </div>
 
-    <!-- L1 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u1);border-color:var(--u1)60;background:var(--u1)12">L1</span>
-        <div class="lec-text">
-          <div class="lec-title">Runtime Review &amp; Asymptotic Notation</div>
-          <div class="lec-subtitle">Big-O, Ω, Θ — expressing and comparing growth rates</div>
+    <div class="infobox">
+      <strong>How to use this page:</strong>
+      Problems are grouped by the exact lecture that teaches what you need to solve them.
+      The small tag is a one-word nudge toward the key idea — no hints about the solution.
+      Collapsed <em>"Extra"</em> sections contain closely related problems that don't perfectly match a single lecture.
+      Click any row to open on LeetCode.
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 1: L1–2 Sorting -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u1">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u1)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">01</span>Asymptotic Analysis &amp; Sorting</h2>
+          <div class="unit-desc">Big-O / Ω / Θ · Insertion Sort · Loop invariants · Comparison-based lower bound</div>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener" style="--row-color:var(--u1)">
-          <span class="prob-num">#1</span>
-          <div><div class="prob-title">Two Sum</div><div class="prob-sub">Can you beat O(n²)? Trade space for time and state the exact complexity.</div></div>
-          <span class="prob-tag">runtime tradeoff</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="noopener" style="--row-color:var(--u1)">
-          <span class="prob-num">#217</span>
-          <div><div class="prob-title">Contains Duplicate</div><div class="prob-sub">Multiple approaches — compare their exact asymptotic cost.</div></div>
-          <span class="prob-tag">O(·) comparison</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener" style="--row-color:var(--u1)">
-          <span class="prob-num">#215</span>
-          <div><div class="prob-title">Kth Largest Element in an Array</div><div class="prob-sub">Several approaches exist — state and compare the runtime of each one.</div></div>
-          <span class="prob-tag">runtime analysis</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- L2 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u1);border-color:var(--u1)60;background:var(--u1)12">L2</span>
-        <div class="lec-text">
-          <div class="lec-title">Insertion Sort, Loop Invariants &amp; Sorting Lower Bound</div>
-          <div class="lec-subtitle">Correctness via loop invariants · Ω(n log n) comparison lower bound via decision trees</div>
+      <!-- L1 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u1);border-color:var(--u1)60;background:var(--u1)12">L1</span>
+          <div class="lec-text">
+            <div class="lec-title">Runtime Review &amp; Asymptotic Notation</div>
+            <div class="lec-subtitle">Big-O, Ω, Θ — expressing and comparing growth rates</div>
+          </div>
         </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/insertion-sort-list/" target="_blank" rel="noopener" style="--row-color:var(--u1)">
-          <span class="prob-num">#147</span>
-          <div><div class="prob-title">Insertion Sort List</div><div class="prob-sub">Implement insertion sort on a linked list — maintain and state the exact invariant from lecture.</div></div>
-          <span class="prob-tag">loop invariant</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="noopener" style="--row-color:var(--u1)">
-          <span class="prob-num">#75</span>
-          <div><div class="prob-title">Sort Colors</div><div class="prob-sub">Single-pass Dutch partition — write down a loop invariant that guarantees correctness.</div></div>
-          <span class="prob-tag">loop invariant</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/sort-an-array/" target="_blank" rel="noopener" style="--row-color:var(--u1)">
-          <span class="prob-num">#912</span>
-          <div><div class="prob-title">Sort an Array</div><div class="prob-sub">Implement any O(n log n) comparison sort from scratch — why can't you do better?</div></div>
-          <span class="prob-tag">comparison sort</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div><!-- /u1 -->
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 2: L3–5 Graphs -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u2">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u2)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">02</span>Graphs — DFS, BFS &amp; Topological Sort</h2>
-        <div class="unit-desc">Graph ADT · DFS pre/post-order &amp; edge types · Topological ordering · BFS layers · Bipartiteness</div>
-      </div>
-    </div>
-
-    <!-- L3 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u2);border-color:var(--u2)60;background:var(--u2)12">L3</span>
-        <div class="lec-text">
-          <div class="lec-title">Abstract Data Types, Graphs &amp; DFS Introduction</div>
-          <div class="lec-subtitle">Adjacency list representation · Stack-based DFS · Visited array</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#200</span>
-          <div><div class="prob-title">Number of Islands</div><div class="prob-sub">DFS + visited array from scratch — mirrors the lecture pseudocode.</div></div>
-          <span class="prob-tag">DFS / components</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/max-area-of-island/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#695</span>
-          <div><div class="prob-title">Max Area of Island</div><div class="prob-sub">DFS while accumulating a value on the call stack — same traversal, richer bookkeeping.</div></div>
-          <span class="prob-tag">DFS</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#133</span>
-          <div><div class="prob-title">Clone Graph</div><div class="prob-sub">DFS with a map as your visited structure — almost exactly the lecture pseudocode.</div></div>
-          <span class="prob-tag">DFS + visited map</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#323</span>
-          <div><div class="prob-title">Number of Connected Components</div><div class="prob-sub">Run DFS from each unvisited node — the outer loop from L3.</div></div>
-          <span class="prob-tag">connected components</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L4 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u2);border-color:var(--u2)60;background:var(--u2)12">L4</span>
-        <div class="lec-text">
-          <div class="lec-title">DFS — Pre/Post-order &amp; Topological Sort</div>
-          <div class="lec-subtitle">Timestamps · Tree / back / forward / cross edges · DAG ↔ no back edges · Topo sort via decreasing post-order</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#207</span>
-          <div><div class="prob-title">Course Schedule</div><div class="prob-sub">Has the schedule a valid ordering? Equivalent to: does the graph have a back edge?</div></div>
-          <span class="prob-tag">cycle ↔ back edge</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/find-eventual-safe-states/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#802</span>
-          <div><div class="prob-title">Find Eventual Safe States</div><div class="prob-sub">A node is safe iff it lies on no cycle — post-order DFS makes this precise.</div></div>
-          <span class="prob-tag">post-order DFS</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L5 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u2);border-color:var(--u2)60;background:var(--u2)12">L5</span>
-        <div class="lec-text">
-          <div class="lec-title">Topological Sort (continued) &amp; BFS</div>
-          <div class="lec-subtitle">BFS layer structure · BFS = shortest path in unweighted graphs · Bipartite testing via 2-coloring</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/course-schedule-ii/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#210</span>
-          <div><div class="prob-title">Course Schedule II</div><div class="prob-sub">Output the actual topological order — Kahn's BFS or DFS post-order both work.</div></div>
-          <span class="prob-tag">topological ordering</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/rotting-oranges/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#994</span>
-          <div><div class="prob-title">Rotting Oranges</div><div class="prob-sub">Multi-source BFS — each orange is at most one layer beyond its rotting neighbour.</div></div>
-          <span class="prob-tag">BFS layers</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/is-graph-bipartite/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#785</span>
-          <div><div class="prob-title">Is Graph Bipartite?</div><div class="prob-sub">BFS 2-coloring — the exact algorithm proven in L5.</div></div>
-          <span class="prob-tag">BFS 2-colouring</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/word-ladder/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#127</span>
-          <div><div class="prob-title">Word Ladder</div><div class="prob-sub">BFS on an implicit graph — shortest path by number of edges, not weights.</div></div>
-          <span class="prob-tag">unweighted shortest path</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/alien-dictionary/" target="_blank" rel="noopener" style="--row-color:var(--u2)">
-          <span class="prob-num">#269</span>
-          <div><div class="prob-title">Alien Dictionary</div><div class="prob-sub">Extract precedence constraints → DAG → topological order. Requires L4 + L5 together.</div></div>
-          <span class="prob-tag">topo sort + DAG</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div><!-- /u2 -->
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 3: L6–9 Greedy -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u3">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u3)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">03</span>Greedy Algorithms</h2>
-        <div class="unit-desc">Dijkstra · Greedy stays ahead · Interval scheduling · Optimal caching · Greedy exchange · Minimising lateness</div>
-      </div>
-    </div>
-
-    <!-- L6 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L6</span>
-        <div class="lec-text">
-          <div class="lec-title">Shortest Path &amp; Greedy Stays Ahead</div>
-          <div class="lec-subtitle">Dijkstra's algorithm · "Greedy stays ahead" proof technique</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/network-delay-time/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#743</span>
-          <div><div class="prob-title">Network Delay Time</div><div class="prob-sub">Dijkstra on a directed weighted graph — classic application.</div></div>
-          <span class="prob-tag">Dijkstra</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#56</span>
-          <div><div class="prob-title">Merge Intervals</div><div class="prob-sub">Sort by start, then scan — warm-up for interval scheduling next lecture.</div></div>
-          <span class="prob-tag">interval processing</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L7 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L7</span>
-        <div class="lec-text">
-          <div class="lec-title">Dijkstra Correctness &amp; Interval Scheduling</div>
-          <div class="lec-subtitle">Full greedy-stays-ahead proof for Dijkstra · Interval scheduling maximisation (earliest-finish-time rule)</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/path-with-minimum-effort/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#1631</span>
-          <div><div class="prob-title">Path with Minimum Effort</div><div class="prob-sub">Dijkstra with a different edge cost — the stays-ahead argument still applies.</div></div>
-          <span class="prob-tag">Dijkstra variant</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/path-with-maximum-probability/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#1514</span>
-          <div><div class="prob-title">Path with Maximum Probability</div><div class="prob-sub">Dijkstra maximising product of edge weights — same proof skeleton, opposite direction.</div></div>
-          <span class="prob-tag">Dijkstra generalised</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#435</span>
-          <div><div class="prob-title">Non-overlapping Intervals</div><div class="prob-sub">Maximise compatible tasks — earliest finish time rule from L7.</div></div>
-          <span class="prob-tag">interval scheduling</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#452</span>
-          <div><div class="prob-title">Minimum Number of Arrows to Burst Balloons</div><div class="prob-sub">Minimum covers of overlapping intervals — greedy on earliest end point.</div></div>
-          <span class="prob-tag">interval covering</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L8 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L8</span>
-        <div class="lec-text">
-          <div class="lec-title">Optimal Caching &amp; Greedy Exchange Argument</div>
-          <div class="lec-subtitle">Farthest-in-future eviction · Exchange argument: transform any solution into the greedy one without increasing cost</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#146</span>
-          <div><div class="prob-title">LRU Cache</div><div class="prob-sub">LRU is the practical proxy for Farthest-in-Future — implement it and think about the gap.</div></div>
-          <span class="prob-tag">caching policy</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#2037</span>
-          <div><div class="prob-title">Minimum Moves to Seat Everyone</div><div class="prob-sub">An exchange argument shows sorting both lists and pairing them is optimal.</div></div>
-          <span class="prob-tag">exchange argument</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#2144</span>
-          <div><div class="prob-title">Minimum Cost of Buying Candies with Discount</div><div class="prob-sub">Prove by exchange that you should always give away the cheapest possible free candy.</div></div>
-          <span class="prob-tag">greedy exchange</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L9 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L9</span>
-        <div class="lec-text">
-          <div class="lec-title">Scheduling to Minimise Lateness</div>
-          <div class="lec-subtitle">Earliest-deadline-first rule · Exchange argument: swapping adjacent inverted jobs monotonically reduces max lateness</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#1353</span>
-          <div><div class="prob-title">Maximum Number of Events That Can Be Attended</div><div class="prob-sub">Attend one event per day — greedily pick the soonest-ending available event (EDF).</div></div>
-          <span class="prob-tag">earliest deadline</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/task-scheduler/" target="_blank" rel="noopener" style="--row-color:var(--u3)">
-          <span class="prob-num">#621</span>
-          <div><div class="prob-title">Task Scheduler</div><div class="prob-sub">Minimise total elapsed time with a cooling constraint — which tasks to schedule first?</div></div>
-          <span class="prob-tag">lateness / scheduling</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Extra — Greedy -->
-    <div class="extra-wrap" id="extra-greedy">
-      <div class="extra-toggle" onclick="toggleExtra('extra-greedy')">
-        <span class="et-icon">+</span>
-        <span>Extra — Greedy (good problems, but broader than a single lecture)</span>
-        <span class="et-chevron">▾</span>
-      </div>
-      <div class="extra-body">
-        <div class="extra-note">These require the full greedy toolkit (Dijkstra + exchanges + scheduling) or blend techniques from multiple lectures.</div>
         <div class="problems">
-          <a class="prob" href="https://leetcode.com/problems/swim-in-rising-water/" target="_blank" rel="noopener" style="--row-color:var(--ux)">
-            <span class="prob-num">#778</span>
-            <div><div class="prob-title">Swim in Rising Water</div><div class="prob-sub">Dijkstra-style greedy on a grid — blends L6 Dijkstra with L9 scheduling intuition.</div></div>
-            <span class="prob-tag">Dijkstra + greedy</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
+          <a class="prob" href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener"
+            style="--row-color:var(--u1)">
+            <span class="prob-num">#1</span>
+            <div>
+              <div class="prob-title">Two Sum</div>
+              <div class="prob-sub">Can you beat O(n²)? Trade space for time and state the exact complexity.</div>
+            </div>
+            <span class="prob-tag">runtime tradeoff</span><span class="diff easy">Easy</span><span
+              class="ext-arrow">↗</span>
           </a>
-          <a class="prob" href="https://leetcode.com/problems/minimum-cost-to-hire-k-workers/" target="_blank" rel="noopener" style="--row-color:var(--ux)">
-            <span class="prob-num">#857</span>
-            <div><div class="prob-title">Minimum Cost to Hire K Workers</div><div class="prob-sub">Fix the "captain" worker by iterating sorted wage/quality ratios — a rich exchange-argument problem.</div></div>
-            <span class="prob-tag">greedy + exchange</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
+          <a class="prob" href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="noopener"
+            style="--row-color:var(--u1)">
+            <span class="prob-num">#217</span>
+            <div>
+              <div class="prob-title">Contains Duplicate</div>
+              <div class="prob-sub">Multiple approaches — compare their exact asymptotic cost.</div>
+            </div>
+            <span class="prob-tag">O(·) comparison</span><span class="diff easy">Easy</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank"
+            rel="noopener" style="--row-color:var(--u1)">
+            <span class="prob-num">#215</span>
+            <div>
+              <div class="prob-title">Kth Largest Element in an Array</div>
+              <div class="prob-sub">Several approaches exist — state and compare the runtime of each one.</div>
+            </div>
+            <span class="prob-tag">runtime analysis</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
           </a>
         </div>
       </div>
-    </div>
-  </div><!-- /u3 -->
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 4: L10–12 D&C -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u4">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u4)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">04</span>Divide &amp; Conquer</h2>
-        <div class="unit-desc">MergeSort + strong induction · Master Theorem · Closest pair of points · Karatsuba / Strassen</div>
-      </div>
-    </div>
-
-    <!-- L10 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u4);border-color:var(--u4)60;background:var(--u4)12">L10</span>
-        <div class="lec-text">
-          <div class="lec-title">MergeSort &amp; Solving Recurrences</div>
-          <div class="lec-subtitle">Divide → Conquer → Combine · T(n) = 2T(n/2)+O(n) · Master Theorem (3 cases)</div>
+      <!-- L2 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u1);border-color:var(--u1)60;background:var(--u1)12">L2</span>
+          <div class="lec-text">
+            <div class="lec-title">Insertion Sort, Loop Invariants &amp; Sorting Lower Bound</div>
+            <div class="lec-subtitle">Correctness via loop invariants · Ω(n log n) comparison lower bound via decision
+              trees</div>
+          </div>
         </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/sort-list/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#148</span>
-          <div><div class="prob-title">Sort List</div><div class="prob-sub">MergeSort on a linked list — implement the recurrence T(n) = 2T(n/2) + O(n) exactly.</div></div>
-          <span class="prob-tag">merge sort</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#53</span>
-          <div><div class="prob-title">Maximum Subarray</div><div class="prob-sub">D&C: answer is in the left half, right half, or crosses the midpoint — same recurrence as MergeSort.</div></div>
-          <span class="prob-tag">D&amp;C</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#23</span>
-          <div><div class="prob-title">Merge K Sorted Lists</div><div class="prob-sub">Pair-and-merge D&C — write the recurrence and apply the Master Theorem.</div></div>
-          <span class="prob-tag">D&amp;C merge</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L11 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u4);border-color:var(--u4)60;background:var(--u4)12">L11</span>
-        <div class="lec-text">
-          <div class="lec-title">Closest Pair of Points</div>
-          <div class="lec-subtitle">Split, conquer each half, combine across the strip — O(n log n) from an O(n²) baseline</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/k-closest-points-to-origin/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#973</span>
-          <div><div class="prob-title">K Closest Points to Origin</div><div class="prob-sub">Euclidean distance practice — simpler than closest pair, but same geometric intuition.</div></div>
-          <span class="prob-tag">closest pair spirit</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/count-of-range-sum/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#327</span>
-          <div><div class="prob-title">Count of Range Sum</div><div class="prob-sub">Counting pairs in the merge step — same "combine across split" idea as the closest pair strip.</div></div>
-          <span class="prob-tag">D&amp;C counting</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L12 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u4);border-color:var(--u4)60;background:var(--u4)12">L12</span>
-        <div class="lec-text">
-          <div class="lec-title">Integer &amp; Matrix Multiplication — Karatsuba &amp; Strassen</div>
-          <div class="lec-subtitle">Karatsuba: T(n)=3T(n/2)+O(n) · Strassen: T(n)=7T(n/2)+O(n²) · Beating the "obvious" lower bound</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/multiply-strings/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#43</span>
-          <div><div class="prob-title">Multiply Strings</div><div class="prob-sub">Arbitrary-precision multiplication — implement schoolbook first, then think about what Karatsuba's split saves.</div></div>
-          <span class="prob-tag">integer multiplication</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/powx-n/" target="_blank" rel="noopener" style="--row-color:var(--u4)">
-          <span class="prob-num">#50</span>
-          <div><div class="prob-title">Pow(x, n)</div><div class="prob-sub">Fast exponentiation — the simplest T(n) = T(n/2) + O(1) recurrence in practice.</div></div>
-          <span class="prob-tag">D&amp;C recurrence</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Extra — D&C -->
-    <div class="extra-wrap" id="extra-dc">
-      <div class="extra-toggle" onclick="toggleExtra('extra-dc')">
-        <span class="et-icon">+</span>
-        <span>Extra — Divide &amp; Conquer (broader than Karatsuba/Strassen)</span>
-        <span class="et-chevron">▾</span>
-      </div>
-      <div class="extra-body">
-        <div class="extra-note">Great D&C problems, but this one is really about binary search rather than integer/matrix multiplication.</div>
         <div class="problems">
-          <a class="prob" href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener" style="--row-color:var(--ux)">
-            <span class="prob-num">#4</span>
-            <div><div class="prob-title">Median of Two Sorted Arrays</div><div class="prob-sub">O(log n) via binary search on a partition — identify the sub-problem and recurrence carefully.</div></div>
-            <span class="prob-tag">binary search / D&amp;C</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
+          <a class="prob" href="https://leetcode.com/problems/insertion-sort-list/" target="_blank" rel="noopener"
+            style="--row-color:var(--u1)">
+            <span class="prob-num">#147</span>
+            <div>
+              <div class="prob-title">Insertion Sort List</div>
+              <div class="prob-sub">Implement insertion sort on a linked list — maintain and state the exact invariant
+                from lecture.</div>
+            </div>
+            <span class="prob-tag">loop invariant</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="noopener"
+            style="--row-color:var(--u1)">
+            <span class="prob-num">#75</span>
+            <div>
+              <div class="prob-title">Sort Colors</div>
+              <div class="prob-sub">Single-pass Dutch partition — write down a loop invariant that guarantees
+                correctness.</div>
+            </div>
+            <span class="prob-tag">loop invariant</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/sort-an-array/" target="_blank" rel="noopener"
+            style="--row-color:var(--u1)">
+            <span class="prob-num">#912</span>
+            <div>
+              <div class="prob-title">Sort an Array</div>
+              <div class="prob-sub">Implement any O(n log n) comparison sort from scratch — why can't you do better?
+              </div>
+            </div>
+            <span class="prob-tag">comparison sort</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
           </a>
         </div>
       </div>
-    </div>
-  </div><!-- /u4 -->
+    </div><!-- /u1 -->
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 5: L13–16 DP -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u5">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u5)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">05</span>Dynamic Programming</h2>
-        <div class="unit-desc">Weighted interval scheduling · 0/1 Knapsack · Segmented least squares · Bellman-Ford shortest paths</div>
-      </div>
-    </div>
-
-    <!-- L13 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L13</span>
-        <div class="lec-text">
-          <div class="lec-title">DP I — Weighted Interval Scheduling</div>
-          <div class="lec-subtitle">OPT(j) = max(v_j + OPT(p(j)), OPT(j−1)) · Memoisation vs bottom-up · Backtracking the solution</div>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 2: L3–5 Graphs -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u2">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u2)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">02</span>Graphs — DFS, BFS &amp; Topological Sort</h2>
+          <div class="unit-desc">Graph ADT · DFS pre/post-order &amp; edge types · Topological ordering · BFS layers ·
+            Bipartiteness</div>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#198</span>
-          <div><div class="prob-title">House Robber</div><div class="prob-sub">"Include this house or skip to the previous compatible one" — the weighted IS recurrence in disguise.</div></div>
-          <span class="prob-tag">OPT(j) recurrence</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/delete-and-earn/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#740</span>
-          <div><div class="prob-title">Delete and Earn</div><div class="prob-sub">Reduce to House Robber by reformulating compatibility — a clean reduction exercise.</div></div>
-          <span class="prob-tag">weighted IS reduction</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/maximum-profit-in-job-scheduling/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#1235</span>
-          <div><div class="prob-title">Maximum Profit in Job Scheduling</div><div class="prob-sub">This is the exact weighted interval scheduling problem from L13 — sort by finish time, binary search for p(j).</div></div>
-          <span class="prob-tag">weighted IS — exact match</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- L14 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L14</span>
-        <div class="lec-text">
-          <div class="lec-title">DP II — Knapsack</div>
-          <div class="lec-subtitle">OPT(i,W) — 2D DP table · "Take item i or don't" · Pseudopolynomial runtime</div>
+      <!-- L3 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u2);border-color:var(--u2)60;background:var(--u2)12">L3</span>
+          <div class="lec-text">
+            <div class="lec-title">Abstract Data Types, Graphs &amp; DFS Introduction</div>
+            <div class="lec-subtitle">Adjacency list representation · Stack-based DFS · Visited array</div>
+          </div>
         </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#322</span>
-          <div><div class="prob-title">Coin Change</div><div class="prob-sub">Unbounded knapsack — items can be reused. Define OPT(amount) and fill the table.</div></div>
-          <span class="prob-tag">knapsack (unbounded)</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#416</span>
-          <div><div class="prob-title">Partition Equal Subset Sum</div><div class="prob-sub">0/1 Knapsack — can you fill capacity exactly W/2? Direct application of OPT(i,W).</div></div>
-          <span class="prob-tag">0/1 knapsack — exact</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/ones-and-zeroes/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#474</span>
-          <div><div class="prob-title">Ones and Zeroes</div><div class="prob-sub">Two-dimensional capacity — generalise OPT(i,W) to OPT(i,m,n).</div></div>
-          <span class="prob-tag">2D knapsack</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/target-sum/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#494</span>
-          <div><div class="prob-title">Target Sum</div><div class="prob-sub">Count the number of +/− assignments hitting the target — knapsack counting, not maximising.</div></div>
-          <span class="prob-tag">knapsack counting</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L15 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L15</span>
-        <div class="lec-text">
-          <div class="lec-title">DP III — Segmented Least Squares</div>
-          <div class="lec-subtitle">OPT(j) = min_{i≤j} {e(i,j) + c + OPT(i−1)} · Partition a sequence minimising cost + segment penalty</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/filling-bookcase-shelves/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#1105</span>
-          <div><div class="prob-title">Filling Bookcase Shelves</div><div class="prob-sub">Partition books into shelves — OPT(j) = min over split point i of {shelf_cost(i..j) + OPT(i−1)}.</div></div>
-          <span class="prob-tag">segmented LS — direct</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/minimum-cost-to-cut-a-stick/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#1547</span>
-          <div><div class="prob-title">Minimum Cost to Cut a Stick</div><div class="prob-sub">Interval DP with cost depending on segment size — same partition-into-segments flavour.</div></div>
-          <span class="prob-tag">interval / segment DP</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- L16 -->
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L16</span>
-        <div class="lec-text">
-          <div class="lec-title">DP IV — Shortest Paths &amp; Bellman-Ford</div>
-          <div class="lec-subtitle">OPT(v,i) = shortest path with ≤i edges · Negative cycle detection (extra column trick) · O(nm) runtime</div>
-        </div>
-      </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/cheapest-flights-within-k-stops/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#787</span>
-          <div><div class="prob-title">Cheapest Flights Within K Stops</div><div class="prob-sub">Bellman-Ford with at most K+1 edges — compute OPT(dst, K+1) by running K+1 relaxation rounds.</div></div>
-          <span class="prob-tag">Bellman-Ford — exact</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/" target="_blank" rel="noopener" style="--row-color:var(--u5)">
-          <span class="prob-num">#1334</span>
-          <div><div class="prob-title">Find the City with Smallest Reachable Cities</div><div class="prob-sub">All-pairs shortest paths — run Bellman-Ford from each source, or use the Floyd-Warshall 3D DP.</div></div>
-          <span class="prob-tag">all-pairs SP</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Extra — DP -->
-    <div class="extra-wrap" id="extra-dp">
-      <div class="extra-toggle" onclick="toggleExtra('extra-dp')">
-        <span class="et-icon">+</span>
-        <span>Extra — Dynamic Programming (classic DP problems not tied to a specific lecture's algorithm)</span>
-        <span class="et-chevron">▾</span>
-      </div>
-      <div class="extra-body">
-        <div class="extra-note">These are essential DP patterns but don't map directly to a specific algorithm (Knapsack/Segmented LS/Bellman-Ford). Work on them after finishing L13–16.</div>
         <div class="problems">
-          <a class="prob" href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener" style="--row-color:var(--ux)">
-            <span class="prob-num">#300</span>
-            <div><div class="prob-title">Longest Increasing Subsequence</div><div class="prob-sub">OPT(i) = 1 + max OPT(j) for j&lt;i with A[j]&lt;A[i] — a canonical sequence DP to know cold.</div></div>
-            <span class="prob-tag">sequence DP</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
+          <a class="prob" href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#200</span>
+            <div>
+              <div class="prob-title">Number of Islands</div>
+              <div class="prob-sub">DFS + visited array from scratch — mirrors the lecture pseudocode.</div>
+            </div>
+            <span class="prob-tag">DFS / components</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
           </a>
-          <a class="prob" href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="noopener" style="--row-color:var(--ux)">
-            <span class="prob-num">#72</span>
-            <div><div class="prob-title">Edit Distance</div><div class="prob-sub">2D DP on strings — OPT(i,j) = min edits to align first i of s1 with first j of s2. Classic after Bellman-Ford solidifies 2D DP thinking.</div></div>
-            <span class="prob-tag">2D string DP</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
+          <a class="prob" href="https://leetcode.com/problems/max-area-of-island/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#695</span>
+            <div>
+              <div class="prob-title">Max Area of Island</div>
+              <div class="prob-sub">DFS while accumulating a value on the call stack — same traversal, richer
+                bookkeeping.</div>
+            </div>
+            <span class="prob-tag">DFS</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#133</span>
+            <div>
+              <div class="prob-title">Clone Graph</div>
+              <div class="prob-sub">DFS with a map as your visited structure — almost exactly the lecture pseudocode.
+              </div>
+            </div>
+            <span class="prob-tag">DFS + visited map</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/"
+            target="_blank" rel="noopener" style="--row-color:var(--u2)">
+            <span class="prob-num">#323</span>
+            <div>
+              <div class="prob-title">Number of Connected Components</div>
+              <div class="prob-sub">Run DFS from each unvisited node — the outer loop from L3.</div>
+            </div>
+            <span class="prob-tag">connected components</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
           </a>
         </div>
       </div>
-    </div>
-  </div><!-- /u5 -->
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 6: L17 NP -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u6">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u6)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">06</span>NP-Completeness &amp; Reductions</h2>
-        <div class="unit-desc">3-SAT · Independent Set · 3-SAT ≤_P Independent Set · P vs NP · Certificate verification</div>
-      </div>
-    </div>
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u6);border-color:var(--u6)60;background:var(--u6)12">L17</span>
-        <div class="lec-text">
-          <div class="lec-title">NP-Completeness, Independent Set &amp; P vs NP</div>
-          <div class="lec-subtitle">Reductions · 3-SAT is NP-complete · 3-SAT ≤_P Independent Set · Verifying vs. solving</div>
+      <!-- L4 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u2);border-color:var(--u2)60;background:var(--u2)12">L4</span>
+          <div class="lec-text">
+            <div class="lec-title">DFS — Pre/Post-order &amp; Topological Sort</div>
+            <div class="lec-subtitle">Timestamps · Tree / back / forward / cross edges · DAG ↔ no back edges · Topo sort
+              via decreasing post-order</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#207</span>
+            <div>
+              <div class="prob-title">Course Schedule</div>
+              <div class="prob-sub">Has the schedule a valid ordering? Equivalent to: does the graph have a back edge?
+              </div>
+            </div>
+            <span class="prob-tag">cycle ↔ back edge</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/find-eventual-safe-states/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#802</span>
+            <div>
+              <div class="prob-title">Find Eventual Safe States</div>
+              <div class="prob-sub">A node is safe iff it lies on no cycle — post-order DFS makes this precise.</div>
+            </div>
+            <span class="prob-tag">post-order DFS</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/satisfiability-of-equality-equations/" target="_blank" rel="noopener" style="--row-color:var(--u6)">
-          <span class="prob-num">#990</span>
-          <div><div class="prob-title">Satisfiability of Equality Equations</div><div class="prob-sub">A structured, polynomial-time solvable form of satisfiability — think about why this is tractable while 3-SAT is not.</div></div>
-          <span class="prob-tag">structured SAT</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/partition-to-k-equal-sum-subsets/" target="_blank" rel="noopener" style="--row-color:var(--u6)">
-          <span class="prob-num">#698</span>
-          <div><div class="prob-title">Partition to K Equal Sum Subsets</div><div class="prob-sub">NP-hard in general (bin packing reduction) — yet tractable here via backtracking. What structure makes this feasible?</div></div>
-          <span class="prob-tag">NP-hard in general</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/maximum-students-taking-exam/" target="_blank" rel="noopener" style="--row-color:var(--u6)">
-          <span class="prob-num">#1349</span>
-          <div><div class="prob-title">Maximum Students Taking Exam</div><div class="prob-sub">Independent set on a grid — NP-hard on general graphs, polynomial here due to row structure (bitmask DP).</div></div>
-          <span class="prob-tag">ind. set (structured)</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/word-break-ii/" target="_blank" rel="noopener" style="--row-color:var(--u6)">
-          <span class="prob-num">#140</span>
-          <div><div class="prob-title">Word Break II</div><div class="prob-sub">Looks exponential but DP makes it polynomial — contrast with why general SAT enumeration cannot do this.</div></div>
-          <span class="prob-tag">structure → tractability</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div><!-- /u6 -->
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UNIT 7: L18–22 LP & Games -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="unit" id="u7">
-    <div class="unit-head">
-      <div class="unit-bar" style="background:var(--u7)"></div>
-      <div class="unit-info">
-        <h2><span class="unit-num">07</span>Linear Programming, Game Theory &amp; Online Learning</h2>
-        <div class="unit-desc">LP formulations · LP duality · Zero-sum games · Minimax theorem · MWU / Regret</div>
-      </div>
-    </div>
-    <div class="lec-group">
-      <div class="lec-label">
-        <span class="lec-chip" style="color:var(--u7);border-color:var(--u7)60;background:var(--u7)12">L20–21</span>
-        <div class="lec-text">
-          <div class="lec-title">LP Duality &amp; The Minimax Theorem</div>
-          <div class="lec-subtitle">Weak/strong duality · Complementary slackness · Zero-sum games · Minimax = maximin via LP duality</div>
+      <!-- L5 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u2);border-color:var(--u2)60;background:var(--u2)12">L5</span>
+          <div class="lec-text">
+            <div class="lec-title">Topological Sort (continued) &amp; BFS</div>
+            <div class="lec-subtitle">BFS layer structure · BFS = shortest path in unweighted graphs · Bipartite testing
+              via 2-coloring</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/course-schedule-ii/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#210</span>
+            <div>
+              <div class="prob-title">Course Schedule II</div>
+              <div class="prob-sub">Output the actual topological order — Kahn's BFS or DFS post-order both work.</div>
+            </div>
+            <span class="prob-tag">topological ordering</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/rotting-oranges/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#994</span>
+            <div>
+              <div class="prob-title">Rotting Oranges</div>
+              <div class="prob-sub">Multi-source BFS — each orange is at most one layer beyond its rotting neighbour.
+              </div>
+            </div>
+            <span class="prob-tag">BFS layers</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/is-graph-bipartite/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#785</span>
+            <div>
+              <div class="prob-title">Is Graph Bipartite?</div>
+              <div class="prob-sub">BFS 2-coloring — the exact algorithm proven in L5.</div>
+            </div>
+            <span class="prob-tag">BFS 2-colouring</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/word-ladder/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#127</span>
+            <div>
+              <div class="prob-title">Word Ladder</div>
+              <div class="prob-sub">BFS on an implicit graph — shortest path by number of edges, not weights.</div>
+            </div>
+            <span class="prob-tag">unweighted shortest path</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/alien-dictionary/" target="_blank" rel="noopener"
+            style="--row-color:var(--u2)">
+            <span class="prob-num">#269</span>
+            <div>
+              <div class="prob-title">Alien Dictionary</div>
+              <div class="prob-sub">Extract precedence constraints → DAG → topological order. Requires L4 + L5 together.
+              </div>
+            </div>
+            <span class="prob-tag">topo sort + DAG</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/nim-game/" target="_blank" rel="noopener" style="--row-color:var(--u7)">
-          <span class="prob-num">#292</span>
-          <div><div class="prob-title">Nim Game</div><div class="prob-sub">The simplest zero-sum game — pure optimal strategy, verify it fits the Minimax Theorem.</div></div>
-          <span class="prob-tag">zero-sum game</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/predict-the-winner/" target="_blank" rel="noopener" style="--row-color:var(--u7)">
-          <span class="prob-num">#486</span>
-          <div><div class="prob-title">Predict the Winner</div><div class="prob-sub">Two-player zero-sum minimax — the Minimax Theorem guarantees an optimal strategy exists.</div></div>
-          <span class="prob-tag">minimax</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/stone-game/" target="_blank" rel="noopener" style="--row-color:var(--u7)">
-          <span class="prob-num">#877</span>
-          <div><div class="prob-title">Stone Game</div><div class="prob-sub">Is there a dominant pure strategy, or must you reason about minimax?</div></div>
-          <span class="prob-tag">game theory</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/" target="_blank" rel="noopener" style="--row-color:var(--u7)">
-          <span class="prob-num">#375</span>
-          <div><div class="prob-title">Guess Number Higher or Lower II</div><div class="prob-sub">Minimise worst-case cost — adversary picks the answer, you minimise. Pure minimax / LP dual flavour.</div></div>
-          <span class="prob-tag">minimax / LP dual</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/" target="_blank" rel="noopener" style="--row-color:var(--u7)">
-          <span class="prob-num">#714</span>
-          <div><div class="prob-title">Best Time to Buy and Sell Stock with Transaction Fee</div><div class="prob-sub">Online decision at each time step — think about what "regret" means in this setting.</div></div>
-          <span class="prob-tag">online decision-making</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div><!-- /u7 -->
+    </div><!-- /u2 -->
 
-  <hr class="div" />
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- BEYOND CURRICULUM -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div id="beyond">
-    <div class="beyond-header">
-      <h2 style="font-size:1.3rem;font-weight:700;letter-spacing:-.015em">Beyond the Curriculum</h2>
-      <span class="beyond-badge">not in DS 320</span>
-    </div>
-
-    <div class="beyond-intro">
-      <strong>Important techniques that DS 320 doesn't cover</strong>, but that are foundational for algorithm design more broadly and extremely common in interviews and competitive programming. These complement what you've learned — treat them as electives after finishing the course material.
-    </div>
-
-    <!-- Union-Find -->
-    <div class="btopic">
-      <div class="btopic-head">
-        <div class="btopic-icon" style="background:rgba(42,161,152,.12)">🔗</div>
-        <div>
-          <div class="btopic-title">Union-Find (Disjoint Set Union)</div>
-          <div class="btopic-why">Near-O(1) amortised connectivity queries — powers Kruskal's MST and many graph problems</div>
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 3: L6–9 Greedy -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u3">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u3)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">03</span>Greedy Algorithms</h2>
+          <div class="unit-desc">Dijkstra · Greedy stays ahead · Interval scheduling · Optimal caching · Greedy exchange
+            · Minimising lateness</div>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener" style="--row-color:#2aa198">
-          <span class="prob-num">#547</span>
-          <div><div class="prob-title">Number of Provinces</div><div class="prob-sub">Connected components — implement DSU with union by rank and path compression.</div></div>
-          <span class="prob-tag">DSU basics</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/redundant-connection/" target="_blank" rel="noopener" style="--row-color:#2aa198">
-          <span class="prob-num">#684</span>
-          <div><div class="prob-title">Redundant Connection</div><div class="prob-sub">Find the edge that creates a cycle — the union operation tells you when two nodes are already connected.</div></div>
-          <span class="prob-tag">DSU cycle detection</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/accounts-merge/" target="_blank" rel="noopener" style="--row-color:#2aa198">
-          <span class="prob-num">#721</span>
-          <div><div class="prob-title">Accounts Merge</div><div class="prob-sub">Union accounts sharing an email — DSU on strings.</div></div>
-          <span class="prob-tag">DSU on strings</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- Monotonic Stack -->
-    <div class="btopic">
-      <div class="btopic-head">
-        <div class="btopic-icon" style="background:rgba(108,113,196,.12)">📊</div>
-        <div>
-          <div class="btopic-title">Monotonic Stack / Queue</div>
-          <div class="btopic-why">O(n) answers to "next greater element" and sliding-window extrema queries</div>
+      <!-- L6 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L6</span>
+          <div class="lec-text">
+            <div class="lec-title">Shortest Path &amp; Greedy Stays Ahead</div>
+            <div class="lec-subtitle">Dijkstra's algorithm · "Greedy stays ahead" proof technique</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/network-delay-time/" target="_blank" rel="noopener"
+            style="--row-color:var(--u3)">
+            <span class="prob-num">#743</span>
+            <div>
+              <div class="prob-title">Network Delay Time</div>
+              <div class="prob-sub">Dijkstra on a directed weighted graph — classic application.</div>
+            </div>
+            <span class="prob-tag">Dijkstra</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener"
+            style="--row-color:var(--u3)">
+            <span class="prob-num">#56</span>
+            <div>
+              <div class="prob-title">Merge Intervals</div>
+              <div class="prob-sub">Sort by start, then scan — warm-up for interval scheduling next lecture.</div>
+            </div>
+            <span class="prob-tag">interval processing</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/daily-temperatures/" target="_blank" rel="noopener" style="--row-color:#6c71c4">
-          <span class="prob-num">#739</span>
-          <div><div class="prob-title">Daily Temperatures</div><div class="prob-sub">Next warmer day for each entry — the classic monotonic stack starter.</div></div>
-          <span class="prob-tag">monotonic stack</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener" style="--row-color:#6c71c4">
-          <span class="prob-num">#84</span>
-          <div><div class="prob-title">Largest Rectangle in Histogram</div><div class="prob-sub">Maintain a stack of "active" bars — the hardest classic monotonic stack problem.</div></div>
-          <span class="prob-tag">monotonic stack</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" rel="noopener" style="--row-color:#6c71c4">
-          <span class="prob-num">#239</span>
-          <div><div class="prob-title">Sliding Window Maximum</div><div class="prob-sub">Monotonic deque for max in O(1) per step — pairs with sliding window technique.</div></div>
-          <span class="prob-tag">monotonic deque</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- Sliding Window / Two Pointers -->
-    <div class="btopic">
-      <div class="btopic-head">
-        <div class="btopic-icon" style="background:rgba(133,153,0,.12)">🪟</div>
-        <div>
-          <div class="btopic-title">Sliding Window &amp; Two Pointers</div>
-          <div class="btopic-why">O(n) subarray / substring problems — a must-know technique missing from the theory curriculum</div>
+      <!-- L7 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L7</span>
+          <div class="lec-text">
+            <div class="lec-title">Dijkstra Correctness &amp; Interval Scheduling</div>
+            <div class="lec-subtitle">Full greedy-stays-ahead proof for Dijkstra · Interval scheduling maximisation
+              (earliest-finish-time rule)</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/path-with-minimum-effort/" target="_blank" rel="noopener"
+            style="--row-color:var(--u3)">
+            <span class="prob-num">#1631</span>
+            <div>
+              <div class="prob-title">Path with Minimum Effort</div>
+              <div class="prob-sub">Dijkstra with a different edge cost — the stays-ahead argument still applies.</div>
+            </div>
+            <span class="prob-tag">Dijkstra variant</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/path-with-maximum-probability/" target="_blank"
+            rel="noopener" style="--row-color:var(--u3)">
+            <span class="prob-num">#1514</span>
+            <div>
+              <div class="prob-title">Path with Maximum Probability</div>
+              <div class="prob-sub">Dijkstra maximising product of edge weights — same proof skeleton, opposite
+                direction.</div>
+            </div>
+            <span class="prob-tag">Dijkstra generalised</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener"
+            style="--row-color:var(--u3)">
+            <span class="prob-num">#435</span>
+            <div>
+              <div class="prob-title">Non-overlapping Intervals</div>
+              <div class="prob-sub">Maximise compatible tasks — earliest finish time rule from L7.</div>
+            </div>
+            <span class="prob-tag">interval scheduling</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/"
+            target="_blank" rel="noopener" style="--row-color:var(--u3)">
+            <span class="prob-num">#452</span>
+            <div>
+              <div class="prob-title">Minimum Number of Arrows to Burst Balloons</div>
+              <div class="prob-sub">Minimum covers of overlapping intervals — greedy on earliest end point.</div>
+            </div>
+            <span class="prob-tag">interval covering</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener" style="--row-color:#859900">
-          <span class="prob-num">#3</span>
-          <div><div class="prob-title">Longest Substring Without Repeating Characters</div><div class="prob-sub">Expand right, shrink left when you hit a duplicate — the sliding window template.</div></div>
-          <span class="prob-tag">sliding window</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/minimum-window-substring/" target="_blank" rel="noopener" style="--row-color:#859900">
-          <span class="prob-num">#76</span>
-          <div><div class="prob-title">Minimum Window Substring</div><div class="prob-sub">Variable-size sliding window with a frequency map — the hardest window problem.</div></div>
-          <span class="prob-tag">sliding window</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener" style="--row-color:#859900">
-          <span class="prob-num">#15</span>
-          <div><div class="prob-title">3Sum</div><div class="prob-sub">Sort, fix one element, two-pointer scan — O(n²) vs O(n³) brute force.</div></div>
-          <span class="prob-tag">two pointers</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- Trie -->
-    <div class="btopic">
-      <div class="btopic-head">
-        <div class="btopic-icon" style="background:rgba(181,137,0,.12)">🌳</div>
-        <div>
-          <div class="btopic-title">Trie (Prefix Tree)</div>
-          <div class="btopic-why">O(L) string search/insert where L = key length — key data structure for autocomplete and word searches</div>
+      <!-- L8 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L8</span>
+          <div class="lec-text">
+            <div class="lec-title">Optimal Caching &amp; Greedy Exchange Argument</div>
+            <div class="lec-subtitle">Farthest-in-future eviction · Exchange argument: transform any solution into the
+              greedy one without increasing cost</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="noopener"
+            style="--row-color:var(--u3)">
+            <span class="prob-num">#146</span>
+            <div>
+              <div class="prob-title">LRU Cache</div>
+              <div class="prob-sub">LRU is the practical proxy for Farthest-in-Future — implement it and think about the
+                gap.</div>
+            </div>
+            <span class="prob-tag">caching policy</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/" target="_blank"
+            rel="noopener" style="--row-color:var(--u3)">
+            <span class="prob-num">#2037</span>
+            <div>
+              <div class="prob-title">Minimum Moves to Seat Everyone</div>
+              <div class="prob-sub">An exchange argument shows sorting both lists and pairing them is optimal.</div>
+            </div>
+            <span class="prob-tag">exchange argument</span><span class="diff easy">Easy</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount/"
+            target="_blank" rel="noopener" style="--row-color:var(--u3)">
+            <span class="prob-num">#2144</span>
+            <div>
+              <div class="prob-title">Minimum Cost of Buying Candies with Discount</div>
+              <div class="prob-sub">Prove by exchange that you should always give away the cheapest possible free candy.
+              </div>
+            </div>
+            <span class="prob-tag">greedy exchange</span><span class="diff easy">Easy</span><span
+              class="ext-arrow">↗</span>
+          </a>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank" rel="noopener" style="--row-color:#b58900">
-          <span class="prob-num">#208</span>
-          <div><div class="prob-title">Implement Trie (Prefix Tree)</div><div class="prob-sub">Build the data structure from scratch — insert, search, startsWith.</div></div>
-          <span class="prob-tag">trie construction</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/word-search-ii/" target="_blank" rel="noopener" style="--row-color:#b58900">
-          <span class="prob-num">#212</span>
-          <div><div class="prob-title">Word Search II</div><div class="prob-sub">DFS on a grid pruned by a trie — combines L3 DFS with this new data structure.</div></div>
-          <span class="prob-tag">trie + DFS</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- Backtracking -->
-    <div class="btopic">
-      <div class="btopic-head">
-        <div class="btopic-icon" style="background:rgba(220,50,47,.08)">↩️</div>
-        <div>
-          <div class="btopic-title">Backtracking</div>
-          <div class="btopic-why">Exhaustive search with pruning — the algorithmic foundation behind NP-hard solvers</div>
+      <!-- L9 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u3);border-color:var(--u3)60;background:var(--u3)12">L9</span>
+          <div class="lec-text">
+            <div class="lec-title">Scheduling to Minimise Lateness</div>
+            <div class="lec-subtitle">Earliest-deadline-first rule · Exchange argument: swapping adjacent inverted jobs
+              monotonically reduces max lateness</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/"
+            target="_blank" rel="noopener" style="--row-color:var(--u3)">
+            <span class="prob-num">#1353</span>
+            <div>
+              <div class="prob-title">Maximum Number of Events That Can Be Attended</div>
+              <div class="prob-sub">Attend one event per day — greedily pick the soonest-ending available event (EDF).
+              </div>
+            </div>
+            <span class="prob-tag">earliest deadline</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/task-scheduler/" target="_blank" rel="noopener"
+            style="--row-color:var(--u3)">
+            <span class="prob-num">#621</span>
+            <div>
+              <div class="prob-title">Task Scheduler</div>
+              <div class="prob-sub">Minimise total elapsed time with a cooling constraint — which tasks to schedule
+                first?</div>
+            </div>
+            <span class="prob-tag">lateness / scheduling</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener" style="--row-color:#dc322f">
-          <span class="prob-num">#46</span>
-          <div><div class="prob-title">Permutations</div><div class="prob-sub">Generate all permutations — the canonical backtracking template.</div></div>
-          <span class="prob-tag">backtracking</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/subsets/" target="_blank" rel="noopener" style="--row-color:#dc322f">
-          <span class="prob-num">#78</span>
-          <div><div class="prob-title">Subsets</div><div class="prob-sub">Enumerate all 2ⁿ subsets — connects to the certificate verification idea from L17.</div></div>
-          <span class="prob-tag">backtracking / subsets</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener" style="--row-color:#dc322f">
-          <span class="prob-num">#37</span>
-          <div><div class="prob-title">Sudoku Solver</div><div class="prob-sub">Constraint-propagation + backtracking — an NP-complete problem solved in practice with smart pruning.</div></div>
-          <span class="prob-tag">backtracking + pruning</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- Bit Manipulation -->
-    <div class="btopic">
-      <div class="btopic-head">
-        <div class="btopic-icon" style="background:rgba(38,139,210,.12)">💡</div>
-        <div>
-          <div class="btopic-title">Bit Manipulation</div>
-          <div class="btopic-why">O(1) tricks with XOR, masks, and shifts — often the key to clean O(n) solutions</div>
+      <!-- Extra — Greedy -->
+      <div class="extra-wrap" id="extra-greedy">
+        <div class="extra-toggle" onclick="toggleExtra('extra-greedy')">
+          <span class="et-icon">+</span>
+          <span>Extra — Greedy (good problems, but broader than a single lecture)</span>
+          <span class="et-chevron">▾</span>
+        </div>
+        <div class="extra-body">
+          <div class="extra-note">These require the full greedy toolkit (Dijkstra + exchanges + scheduling) or blend
+            techniques from multiple lectures.</div>
+          <div class="problems">
+            <a class="prob" href="https://leetcode.com/problems/swim-in-rising-water/" target="_blank" rel="noopener"
+              style="--row-color:var(--ux)">
+              <span class="prob-num">#778</span>
+              <div>
+                <div class="prob-title">Swim in Rising Water</div>
+                <div class="prob-sub">Dijkstra-style greedy on a grid — blends L6 Dijkstra with L9 scheduling intuition.
+                </div>
+              </div>
+              <span class="prob-tag">Dijkstra + greedy</span><span class="diff hard">Hard</span><span
+                class="ext-arrow">↗</span>
+            </a>
+            <a class="prob" href="https://leetcode.com/problems/minimum-cost-to-hire-k-workers/" target="_blank"
+              rel="noopener" style="--row-color:var(--ux)">
+              <span class="prob-num">#857</span>
+              <div>
+                <div class="prob-title">Minimum Cost to Hire K Workers</div>
+                <div class="prob-sub">Fix the "captain" worker by iterating sorted wage/quality ratios — a rich
+                  exchange-argument problem.</div>
+              </div>
+              <span class="prob-tag">greedy + exchange</span><span class="diff hard">Hard</span><span
+                class="ext-arrow">↗</span>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="problems">
-        <a class="prob" href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener" style="--row-color:#268bd2">
-          <span class="prob-num">#136</span>
-          <div><div class="prob-title">Single Number</div><div class="prob-sub">XOR every element — the unique one survives because x⊕x=0.</div></div>
-          <span class="prob-tag">XOR trick</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="noopener" style="--row-color:#268bd2">
-          <span class="prob-num">#191</span>
-          <div><div class="prob-title">Number of 1 Bits</div><div class="prob-sub">Count set bits — Kernighan's trick (n &amp; (n-1) clears the lowest set bit) makes this O(popcount).</div></div>
-          <span class="prob-tag">bit counting</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
-        </a>
-        <a class="prob" href="https://leetcode.com/problems/sum-of-two-integers/" target="_blank" rel="noopener" style="--row-color:#268bd2">
-          <span class="prob-num">#371</span>
-          <div><div class="prob-title">Sum of Two Integers</div><div class="prob-sub">Add without + or − using XOR and carry — forces you to think at the bit level.</div></div>
-          <span class="prob-tag">bit arithmetic</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
-        </a>
+    </div><!-- /u3 -->
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 4: L10–12 D&C -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u4">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u4)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">04</span>Divide &amp; Conquer</h2>
+          <div class="unit-desc">MergeSort + strong induction · Master Theorem · Closest pair of points · Karatsuba /
+            Strassen</div>
+        </div>
       </div>
+
+      <!-- L10 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u4);border-color:var(--u4)60;background:var(--u4)12">L10</span>
+          <div class="lec-text">
+            <div class="lec-title">MergeSort &amp; Solving Recurrences</div>
+            <div class="lec-subtitle">Divide → Conquer → Combine · T(n) = 2T(n/2)+O(n) · Master Theorem (3 cases)</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/sort-list/" target="_blank" rel="noopener"
+            style="--row-color:var(--u4)">
+            <span class="prob-num">#148</span>
+            <div>
+              <div class="prob-title">Sort List</div>
+              <div class="prob-sub">MergeSort on a linked list — implement the recurrence T(n) = 2T(n/2) + O(n) exactly.
+              </div>
+            </div>
+            <span class="prob-tag">merge sort</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener"
+            style="--row-color:var(--u4)">
+            <span class="prob-num">#53</span>
+            <div>
+              <div class="prob-title">Maximum Subarray</div>
+              <div class="prob-sub">D&C: answer is in the left half, right half, or crosses the midpoint — same
+                recurrence as MergeSort.</div>
+            </div>
+            <span class="prob-tag">D&amp;C</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener"
+            style="--row-color:var(--u4)">
+            <span class="prob-num">#23</span>
+            <div>
+              <div class="prob-title">Merge K Sorted Lists</div>
+              <div class="prob-sub">Pair-and-merge D&C — write the recurrence and apply the Master Theorem.</div>
+            </div>
+            <span class="prob-tag">D&amp;C merge</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- L11 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u4);border-color:var(--u4)60;background:var(--u4)12">L11</span>
+          <div class="lec-text">
+            <div class="lec-title">Closest Pair of Points</div>
+            <div class="lec-subtitle">Split, conquer each half, combine across the strip — O(n log n) from an O(n²)
+              baseline</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/k-closest-points-to-origin/" target="_blank"
+            rel="noopener" style="--row-color:var(--u4)">
+            <span class="prob-num">#973</span>
+            <div>
+              <div class="prob-title">K Closest Points to Origin</div>
+              <div class="prob-sub">Euclidean distance practice — simpler than closest pair, but same geometric
+                intuition.</div>
+            </div>
+            <span class="prob-tag">closest pair spirit</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/count-of-range-sum/" target="_blank" rel="noopener"
+            style="--row-color:var(--u4)">
+            <span class="prob-num">#327</span>
+            <div>
+              <div class="prob-title">Count of Range Sum</div>
+              <div class="prob-sub">Counting pairs in the merge step — same "combine across split" idea as the closest
+                pair strip.</div>
+            </div>
+            <span class="prob-tag">D&amp;C counting</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- L12 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u4);border-color:var(--u4)60;background:var(--u4)12">L12</span>
+          <div class="lec-text">
+            <div class="lec-title">Integer &amp; Matrix Multiplication — Karatsuba &amp; Strassen</div>
+            <div class="lec-subtitle">Karatsuba: T(n)=3T(n/2)+O(n) · Strassen: T(n)=7T(n/2)+O(n²) · Beating the
+              "obvious" lower bound</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/multiply-strings/" target="_blank" rel="noopener"
+            style="--row-color:var(--u4)">
+            <span class="prob-num">#43</span>
+            <div>
+              <div class="prob-title">Multiply Strings</div>
+              <div class="prob-sub">Arbitrary-precision multiplication — implement schoolbook first, then think about
+                what Karatsuba's split saves.</div>
+            </div>
+            <span class="prob-tag">integer multiplication</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/powx-n/" target="_blank" rel="noopener"
+            style="--row-color:var(--u4)">
+            <span class="prob-num">#50</span>
+            <div>
+              <div class="prob-title">Pow(x, n)</div>
+              <div class="prob-sub">Fast exponentiation — the simplest T(n) = T(n/2) + O(1) recurrence in practice.
+              </div>
+            </div>
+            <span class="prob-tag">D&amp;C recurrence</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Extra — D&C -->
+      <div class="extra-wrap" id="extra-dc">
+        <div class="extra-toggle" onclick="toggleExtra('extra-dc')">
+          <span class="et-icon">+</span>
+          <span>Extra — Divide &amp; Conquer (broader than Karatsuba/Strassen)</span>
+          <span class="et-chevron">▾</span>
+        </div>
+        <div class="extra-body">
+          <div class="extra-note">Great D&C problems, but this one is really about binary search rather than
+            integer/matrix multiplication.</div>
+          <div class="problems">
+            <a class="prob" href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank"
+              rel="noopener" style="--row-color:var(--ux)">
+              <span class="prob-num">#4</span>
+              <div>
+                <div class="prob-title">Median of Two Sorted Arrays</div>
+                <div class="prob-sub">O(log n) via binary search on a partition — identify the sub-problem and
+                  recurrence carefully.</div>
+              </div>
+              <span class="prob-tag">binary search / D&amp;C</span><span class="diff hard">Hard</span><span
+                class="ext-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /u4 -->
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 5: L13–16 DP -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u5">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u5)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">05</span>Dynamic Programming</h2>
+          <div class="unit-desc">Weighted interval scheduling · 0/1 Knapsack · Segmented least squares · Bellman-Ford
+            shortest paths</div>
+        </div>
+      </div>
+
+      <!-- L13 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L13</span>
+          <div class="lec-text">
+            <div class="lec-title">DP I — Weighted Interval Scheduling</div>
+            <div class="lec-subtitle">OPT(j) = max(v_j + OPT(p(j)), OPT(j−1)) · Memoisation vs bottom-up · Backtracking
+              the solution</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener"
+            style="--row-color:var(--u5)">
+            <span class="prob-num">#198</span>
+            <div>
+              <div class="prob-title">House Robber</div>
+              <div class="prob-sub">"Include this house or skip to the previous compatible one" — the weighted IS
+                recurrence in disguise.</div>
+            </div>
+            <span class="prob-tag">OPT(j) recurrence</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/delete-and-earn/" target="_blank" rel="noopener"
+            style="--row-color:var(--u5)">
+            <span class="prob-num">#740</span>
+            <div>
+              <div class="prob-title">Delete and Earn</div>
+              <div class="prob-sub">Reduce to House Robber by reformulating compatibility — a clean reduction exercise.
+              </div>
+            </div>
+            <span class="prob-tag">weighted IS reduction</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/maximum-profit-in-job-scheduling/" target="_blank"
+            rel="noopener" style="--row-color:var(--u5)">
+            <span class="prob-num">#1235</span>
+            <div>
+              <div class="prob-title">Maximum Profit in Job Scheduling</div>
+              <div class="prob-sub">This is the exact weighted interval scheduling problem from L13 — sort by finish
+                time, binary search for p(j).</div>
+            </div>
+            <span class="prob-tag">weighted IS — exact match</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- L14 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L14</span>
+          <div class="lec-text">
+            <div class="lec-title">DP II — Knapsack</div>
+            <div class="lec-subtitle">OPT(i,W) — 2D DP table · "Take item i or don't" · Pseudopolynomial runtime</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener"
+            style="--row-color:var(--u5)">
+            <span class="prob-num">#322</span>
+            <div>
+              <div class="prob-title">Coin Change</div>
+              <div class="prob-sub">Unbounded knapsack — items can be reused. Define OPT(amount) and fill the table.
+              </div>
+            </div>
+            <span class="prob-tag">knapsack (unbounded)</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank"
+            rel="noopener" style="--row-color:var(--u5)">
+            <span class="prob-num">#416</span>
+            <div>
+              <div class="prob-title">Partition Equal Subset Sum</div>
+              <div class="prob-sub">0/1 Knapsack — can you fill capacity exactly W/2? Direct application of OPT(i,W).
+              </div>
+            </div>
+            <span class="prob-tag">0/1 knapsack — exact</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/ones-and-zeroes/" target="_blank" rel="noopener"
+            style="--row-color:var(--u5)">
+            <span class="prob-num">#474</span>
+            <div>
+              <div class="prob-title">Ones and Zeroes</div>
+              <div class="prob-sub">Two-dimensional capacity — generalise OPT(i,W) to OPT(i,m,n).</div>
+            </div>
+            <span class="prob-tag">2D knapsack</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/target-sum/" target="_blank" rel="noopener"
+            style="--row-color:var(--u5)">
+            <span class="prob-num">#494</span>
+            <div>
+              <div class="prob-title">Target Sum</div>
+              <div class="prob-sub">Count the number of +/− assignments hitting the target — knapsack counting, not
+                maximising.</div>
+            </div>
+            <span class="prob-tag">knapsack counting</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- L15 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L15</span>
+          <div class="lec-text">
+            <div class="lec-title">DP III — Segmented Least Squares</div>
+            <div class="lec-subtitle">OPT(j) = min_{i≤j} {e(i,j) + c + OPT(i−1)} · Partition a sequence minimising cost
+              + segment penalty</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/filling-bookcase-shelves/" target="_blank" rel="noopener"
+            style="--row-color:var(--u5)">
+            <span class="prob-num">#1105</span>
+            <div>
+              <div class="prob-title">Filling Bookcase Shelves</div>
+              <div class="prob-sub">Partition books into shelves — OPT(j) = min over split point i of {shelf_cost(i..j)
+                + OPT(i−1)}.</div>
+            </div>
+            <span class="prob-tag">segmented LS — direct</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/minimum-cost-to-cut-a-stick/" target="_blank"
+            rel="noopener" style="--row-color:var(--u5)">
+            <span class="prob-num">#1547</span>
+            <div>
+              <div class="prob-title">Minimum Cost to Cut a Stick</div>
+              <div class="prob-sub">Interval DP with cost depending on segment size — same partition-into-segments
+                flavour.</div>
+            </div>
+            <span class="prob-tag">interval / segment DP</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- L16 -->
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u5);border-color:var(--u5)60;background:var(--u5)12">L16</span>
+          <div class="lec-text">
+            <div class="lec-title">DP IV — Shortest Paths &amp; Bellman-Ford</div>
+            <div class="lec-subtitle">OPT(v,i) = shortest path with ≤i edges · Negative cycle detection (extra column
+              trick) · O(nm) runtime</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/cheapest-flights-within-k-stops/" target="_blank"
+            rel="noopener" style="--row-color:var(--u5)">
+            <span class="prob-num">#787</span>
+            <div>
+              <div class="prob-title">Cheapest Flights Within K Stops</div>
+              <div class="prob-sub">Bellman-Ford with at most K+1 edges — compute OPT(dst, K+1) by running K+1
+                relaxation rounds.</div>
+            </div>
+            <span class="prob-tag">Bellman-Ford — exact</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob"
+            href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/"
+            target="_blank" rel="noopener" style="--row-color:var(--u5)">
+            <span class="prob-num">#1334</span>
+            <div>
+              <div class="prob-title">Find the City with Smallest Reachable Cities</div>
+              <div class="prob-sub">All-pairs shortest paths — run Bellman-Ford from each source, or use the
+                Floyd-Warshall 3D DP.</div>
+            </div>
+            <span class="prob-tag">all-pairs SP</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Extra — DP -->
+      <div class="extra-wrap" id="extra-dp">
+        <div class="extra-toggle" onclick="toggleExtra('extra-dp')">
+          <span class="et-icon">+</span>
+          <span>Extra — Dynamic Programming (classic DP problems not tied to a specific lecture's algorithm)</span>
+          <span class="et-chevron">▾</span>
+        </div>
+        <div class="extra-body">
+          <div class="extra-note">These are essential DP patterns but don't map directly to a specific algorithm
+            (Knapsack/Segmented LS/Bellman-Ford). Work on them after finishing L13–16.</div>
+          <div class="problems">
+            <a class="prob" href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank"
+              rel="noopener" style="--row-color:var(--ux)">
+              <span class="prob-num">#300</span>
+              <div>
+                <div class="prob-title">Longest Increasing Subsequence</div>
+                <div class="prob-sub">OPT(i) = 1 + max OPT(j) for j&lt;i with A[j]&lt;A[i] — a canonical sequence DP to
+                  know cold.</div>
+              </div>
+              <span class="prob-tag">sequence DP</span><span class="diff medium">Medium</span><span
+                class="ext-arrow">↗</span>
+            </a>
+            <a class="prob" href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="noopener"
+              style="--row-color:var(--ux)">
+              <span class="prob-num">#72</span>
+              <div>
+                <div class="prob-title">Edit Distance</div>
+                <div class="prob-sub">2D DP on strings — OPT(i,j) = min edits to align first i of s1 with first j of s2.
+                  Classic after Bellman-Ford solidifies 2D DP thinking.</div>
+              </div>
+              <span class="prob-tag">2D string DP</span><span class="diff medium">Medium</span><span
+                class="ext-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /u5 -->
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 6: L17 NP -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u6">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u6)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">06</span>NP-Completeness &amp; Reductions</h2>
+          <div class="unit-desc">3-SAT · Independent Set · 3-SAT ≤_P Independent Set · P vs NP · Certificate
+            verification</div>
+        </div>
+      </div>
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u6);border-color:var(--u6)60;background:var(--u6)12">L17</span>
+          <div class="lec-text">
+            <div class="lec-title">NP-Completeness, Independent Set &amp; P vs NP</div>
+            <div class="lec-subtitle">Reductions · 3-SAT is NP-complete · 3-SAT ≤_P Independent Set · Verifying vs.
+              solving</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/satisfiability-of-equality-equations/" target="_blank"
+            rel="noopener" style="--row-color:var(--u6)">
+            <span class="prob-num">#990</span>
+            <div>
+              <div class="prob-title">Satisfiability of Equality Equations</div>
+              <div class="prob-sub">A structured, polynomial-time solvable form of satisfiability — think about why this
+                is tractable while 3-SAT is not.</div>
+            </div>
+            <span class="prob-tag">structured SAT</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/partition-to-k-equal-sum-subsets/" target="_blank"
+            rel="noopener" style="--row-color:var(--u6)">
+            <span class="prob-num">#698</span>
+            <div>
+              <div class="prob-title">Partition to K Equal Sum Subsets</div>
+              <div class="prob-sub">NP-hard in general (bin packing reduction) — yet tractable here via backtracking.
+                What structure makes this feasible?</div>
+            </div>
+            <span class="prob-tag">NP-hard in general</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/maximum-students-taking-exam/" target="_blank"
+            rel="noopener" style="--row-color:var(--u6)">
+            <span class="prob-num">#1349</span>
+            <div>
+              <div class="prob-title">Maximum Students Taking Exam</div>
+              <div class="prob-sub">Independent set on a grid — NP-hard on general graphs, polynomial here due to row
+                structure (bitmask DP).</div>
+            </div>
+            <span class="prob-tag">ind. set (structured)</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/word-break-ii/" target="_blank" rel="noopener"
+            style="--row-color:var(--u6)">
+            <span class="prob-num">#140</span>
+            <div>
+              <div class="prob-title">Word Break II</div>
+              <div class="prob-sub">Looks exponential but DP makes it polynomial — contrast with why general SAT
+                enumeration cannot do this.</div>
+            </div>
+            <span class="prob-tag">structure → tractability</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div><!-- /u6 -->
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- UNIT 7: L18–22 LP & Games -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="unit" id="u7">
+      <div class="unit-head">
+        <div class="unit-bar" style="background:var(--u7)"></div>
+        <div class="unit-info">
+          <h2><span class="unit-num">07</span>Linear Programming, Game Theory &amp; Online Learning</h2>
+          <div class="unit-desc">LP formulations · LP duality · Zero-sum games · Minimax theorem · MWU / Regret</div>
+        </div>
+      </div>
+      <div class="lec-group">
+        <div class="lec-label">
+          <span class="lec-chip" style="color:var(--u7);border-color:var(--u7)60;background:var(--u7)12">L20–21</span>
+          <div class="lec-text">
+            <div class="lec-title">LP Duality &amp; The Minimax Theorem</div>
+            <div class="lec-subtitle">Weak/strong duality · Complementary slackness · Zero-sum games · Minimax = maximin
+              via LP duality</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/nim-game/" target="_blank" rel="noopener"
+            style="--row-color:var(--u7)">
+            <span class="prob-num">#292</span>
+            <div>
+              <div class="prob-title">Nim Game</div>
+              <div class="prob-sub">The simplest zero-sum game — pure optimal strategy, verify it fits the Minimax
+                Theorem.</div>
+            </div>
+            <span class="prob-tag">zero-sum game</span><span class="diff easy">Easy</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/predict-the-winner/" target="_blank" rel="noopener"
+            style="--row-color:var(--u7)">
+            <span class="prob-num">#486</span>
+            <div>
+              <div class="prob-title">Predict the Winner</div>
+              <div class="prob-sub">Two-player zero-sum minimax — the Minimax Theorem guarantees an optimal strategy
+                exists.</div>
+            </div>
+            <span class="prob-tag">minimax</span><span class="diff medium">Medium</span><span class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/stone-game/" target="_blank" rel="noopener"
+            style="--row-color:var(--u7)">
+            <span class="prob-num">#877</span>
+            <div>
+              <div class="prob-title">Stone Game</div>
+              <div class="prob-sub">Is there a dominant pure strategy, or must you reason about minimax?</div>
+            </div>
+            <span class="prob-tag">game theory</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/" target="_blank"
+            rel="noopener" style="--row-color:var(--u7)">
+            <span class="prob-num">#375</span>
+            <div>
+              <div class="prob-title">Guess Number Higher or Lower II</div>
+              <div class="prob-sub">Minimise worst-case cost — adversary picks the answer, you minimise. Pure minimax /
+                LP dual flavour.</div>
+            </div>
+            <span class="prob-tag">minimax / LP dual</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/"
+            target="_blank" rel="noopener" style="--row-color:var(--u7)">
+            <span class="prob-num">#714</span>
+            <div>
+              <div class="prob-title">Best Time to Buy and Sell Stock with Transaction Fee</div>
+              <div class="prob-sub">Online decision at each time step — think about what "regret" means in this setting.
+              </div>
+            </div>
+            <span class="prob-tag">online decision-making</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div><!-- /u7 -->
+
+    <hr class="div" />
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- BEYOND CURRICULUM -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div id="beyond">
+      <div class="beyond-header">
+        <h2 style="font-size:1.3rem;font-weight:700;letter-spacing:-.015em">Beyond the Curriculum</h2>
+        <span class="beyond-badge">not in DS 320</span>
+      </div>
+
+      <div class="beyond-intro">
+        <strong>Important techniques that DS 320 doesn't cover</strong>, but that are foundational for algorithm design
+        more broadly and extremely common in interviews and competitive programming. These complement what you've
+        learned — treat them as electives after finishing the course material.
+      </div>
+
+      <!-- Union-Find -->
+      <div class="btopic">
+        <div class="btopic-head">
+          <div class="btopic-icon" style="background:rgba(42,161,152,.12)">🔗</div>
+          <div>
+            <div class="btopic-title">Union-Find (Disjoint Set Union)</div>
+            <div class="btopic-why">Near-O(1) amortised connectivity queries — powers Kruskal's MST and many graph
+              problems</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener"
+            style="--row-color:#2aa198">
+            <span class="prob-num">#547</span>
+            <div>
+              <div class="prob-title">Number of Provinces</div>
+              <div class="prob-sub">Connected components — implement DSU with union by rank and path compression.</div>
+            </div>
+            <span class="prob-tag">DSU basics</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/redundant-connection/" target="_blank" rel="noopener"
+            style="--row-color:#2aa198">
+            <span class="prob-num">#684</span>
+            <div>
+              <div class="prob-title">Redundant Connection</div>
+              <div class="prob-sub">Find the edge that creates a cycle — the union operation tells you when two nodes
+                are already connected.</div>
+            </div>
+            <span class="prob-tag">DSU cycle detection</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/accounts-merge/" target="_blank" rel="noopener"
+            style="--row-color:#2aa198">
+            <span class="prob-num">#721</span>
+            <div>
+              <div class="prob-title">Accounts Merge</div>
+              <div class="prob-sub">Union accounts sharing an email — DSU on strings.</div>
+            </div>
+            <span class="prob-tag">DSU on strings</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Monotonic Stack -->
+      <div class="btopic">
+        <div class="btopic-head">
+          <div class="btopic-icon" style="background:rgba(108,113,196,.12)">📊</div>
+          <div>
+            <div class="btopic-title">Monotonic Stack / Queue</div>
+            <div class="btopic-why">O(n) answers to "next greater element" and sliding-window extrema queries</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/daily-temperatures/" target="_blank" rel="noopener"
+            style="--row-color:#6c71c4">
+            <span class="prob-num">#739</span>
+            <div>
+              <div class="prob-title">Daily Temperatures</div>
+              <div class="prob-sub">Next warmer day for each entry — the classic monotonic stack starter.</div>
+            </div>
+            <span class="prob-tag">monotonic stack</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank"
+            rel="noopener" style="--row-color:#6c71c4">
+            <span class="prob-num">#84</span>
+            <div>
+              <div class="prob-title">Largest Rectangle in Histogram</div>
+              <div class="prob-sub">Maintain a stack of "active" bars — the hardest classic monotonic stack problem.
+              </div>
+            </div>
+            <span class="prob-tag">monotonic stack</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" rel="noopener"
+            style="--row-color:#6c71c4">
+            <span class="prob-num">#239</span>
+            <div>
+              <div class="prob-title">Sliding Window Maximum</div>
+              <div class="prob-sub">Monotonic deque for max in O(1) per step — pairs with sliding window technique.
+              </div>
+            </div>
+            <span class="prob-tag">monotonic deque</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sliding Window / Two Pointers -->
+      <div class="btopic">
+        <div class="btopic-head">
+          <div class="btopic-icon" style="background:rgba(133,153,0,.12)">🪟</div>
+          <div>
+            <div class="btopic-title">Sliding Window &amp; Two Pointers</div>
+            <div class="btopic-why">O(n) subarray / substring problems — a must-know technique missing from the theory
+              curriculum</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+            target="_blank" rel="noopener" style="--row-color:#859900">
+            <span class="prob-num">#3</span>
+            <div>
+              <div class="prob-title">Longest Substring Without Repeating Characters</div>
+              <div class="prob-sub">Expand right, shrink left when you hit a duplicate — the sliding window template.
+              </div>
+            </div>
+            <span class="prob-tag">sliding window</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/minimum-window-substring/" target="_blank" rel="noopener"
+            style="--row-color:#859900">
+            <span class="prob-num">#76</span>
+            <div>
+              <div class="prob-title">Minimum Window Substring</div>
+              <div class="prob-sub">Variable-size sliding window with a frequency map — the hardest window problem.
+              </div>
+            </div>
+            <span class="prob-tag">sliding window</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener"
+            style="--row-color:#859900">
+            <span class="prob-num">#15</span>
+            <div>
+              <div class="prob-title">3Sum</div>
+              <div class="prob-sub">Sort, fix one element, two-pointer scan — O(n²) vs O(n³) brute force.</div>
+            </div>
+            <span class="prob-tag">two pointers</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Trie -->
+      <div class="btopic">
+        <div class="btopic-head">
+          <div class="btopic-icon" style="background:rgba(181,137,0,.12)">🌳</div>
+          <div>
+            <div class="btopic-title">Trie (Prefix Tree)</div>
+            <div class="btopic-why">O(L) string search/insert where L = key length — key data structure for autocomplete
+              and word searches</div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank"
+            rel="noopener" style="--row-color:#b58900">
+            <span class="prob-num">#208</span>
+            <div>
+              <div class="prob-title">Implement Trie (Prefix Tree)</div>
+              <div class="prob-sub">Build the data structure from scratch — insert, search, startsWith.</div>
+            </div>
+            <span class="prob-tag">trie construction</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/word-search-ii/" target="_blank" rel="noopener"
+            style="--row-color:#b58900">
+            <span class="prob-num">#212</span>
+            <div>
+              <div class="prob-title">Word Search II</div>
+              <div class="prob-sub">DFS on a grid pruned by a trie — combines L3 DFS with this new data structure.</div>
+            </div>
+            <span class="prob-tag">trie + DFS</span><span class="diff hard">Hard</span><span class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Backtracking -->
+      <div class="btopic">
+        <div class="btopic-head">
+          <div class="btopic-icon" style="background:rgba(220,50,47,.08)">↩️</div>
+          <div>
+            <div class="btopic-title">Backtracking</div>
+            <div class="btopic-why">Exhaustive search with pruning — the algorithmic foundation behind NP-hard solvers
+            </div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener"
+            style="--row-color:#dc322f">
+            <span class="prob-num">#46</span>
+            <div>
+              <div class="prob-title">Permutations</div>
+              <div class="prob-sub">Generate all permutations — the canonical backtracking template.</div>
+            </div>
+            <span class="prob-tag">backtracking</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/subsets/" target="_blank" rel="noopener"
+            style="--row-color:#dc322f">
+            <span class="prob-num">#78</span>
+            <div>
+              <div class="prob-title">Subsets</div>
+              <div class="prob-sub">Enumerate all 2ⁿ subsets — connects to the certificate verification idea from L17.
+              </div>
+            </div>
+            <span class="prob-tag">backtracking / subsets</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener"
+            style="--row-color:#dc322f">
+            <span class="prob-num">#37</span>
+            <div>
+              <div class="prob-title">Sudoku Solver</div>
+              <div class="prob-sub">Constraint-propagation + backtracking — an NP-complete problem solved in practice
+                with smart pruning.</div>
+            </div>
+            <span class="prob-tag">backtracking + pruning</span><span class="diff hard">Hard</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bit Manipulation -->
+      <div class="btopic">
+        <div class="btopic-head">
+          <div class="btopic-icon" style="background:rgba(38,139,210,.12)">💡</div>
+          <div>
+            <div class="btopic-title">Bit Manipulation</div>
+            <div class="btopic-why">O(1) tricks with XOR, masks, and shifts — often the key to clean O(n) solutions
+            </div>
+          </div>
+        </div>
+        <div class="problems">
+          <a class="prob" href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener"
+            style="--row-color:#268bd2">
+            <span class="prob-num">#136</span>
+            <div>
+              <div class="prob-title">Single Number</div>
+              <div class="prob-sub">XOR every element — the unique one survives because x⊕x=0.</div>
+            </div>
+            <span class="prob-tag">XOR trick</span><span class="diff easy">Easy</span><span class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="noopener"
+            style="--row-color:#268bd2">
+            <span class="prob-num">#191</span>
+            <div>
+              <div class="prob-title">Number of 1 Bits</div>
+              <div class="prob-sub">Count set bits — Kernighan's trick (n &amp; (n-1) clears the lowest set bit) makes
+                this O(popcount).</div>
+            </div>
+            <span class="prob-tag">bit counting</span><span class="diff easy">Easy</span><span
+              class="ext-arrow">↗</span>
+          </a>
+          <a class="prob" href="https://leetcode.com/problems/sum-of-two-integers/" target="_blank" rel="noopener"
+            style="--row-color:#268bd2">
+            <span class="prob-num">#371</span>
+            <div>
+              <div class="prob-title">Sum of Two Integers</div>
+              <div class="prob-sub">Add without + or − using XOR and carry — forces you to think at the bit level.</div>
+            </div>
+            <span class="prob-tag">bit arithmetic</span><span class="diff medium">Medium</span><span
+              class="ext-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /beyond -->
+
+    <hr class="div" />
+
+    <div class="notebox">
+      <strong>Textbook references:</strong>
+      Greedy (L6–9) → KT §4. D&amp;C (L10–12) → KT §5.
+      DP (L13–16) → KT §6 &amp; CLRS §15 &amp; §24.
+      NP (L17) → KT §8.
+      LP (L18–22) → <a href="https://www.kiragoldner.com/teaching/DS320/spring26/lp.pdf" target="_blank"
+        rel="noopener">LP Guide</a> on the course site.
+      LeetCode explore cards for
+      <a href="https://leetcode.com/explore/learn/card/graph/" target="_blank" rel="noopener">Graphs</a> and
+      <a href="https://leetcode.com/explore/learn/card/dynamic-programming/" target="_blank" rel="noopener">Dynamic
+        Programming</a>
+      are excellent companions.
     </div>
 
-  </div><!-- /beyond -->
+  </main>
 
-  <hr class="div" />
+  <footer>
+    <p>DS 320 Algorithms for Data Science · Boston University · Spring 2026 ·
+      <a href="https://www.kiragoldner.com/teaching/DS320/index.html" target="_blank" rel="noopener">Course Website</a>
+      ·
+      <a href="https://leetcode.com/u/Tsiliii/" target="_blank" rel="noopener">TA's LeetCode</a> ·
+      <a href="https://tsiliii.github.io">tsiliii.github.io</a>
+    </p>
+    <p>Problems selected in the spirit of the course — come to office hours if you're stuck 🙂</p>
+  </footer>
 
-  <div class="notebox">
-    <strong>Textbook references:</strong>
-    Greedy (L6–9) → KT §4. D&amp;C (L10–12) → KT §5.
-    DP (L13–16) → KT §6 &amp; CLRS §15 &amp; §24.
-    NP (L17) → KT §8.
-    LP (L18–22) → <a href="https://www.kiragoldner.com/teaching/DS320/spring26/lp.pdf" target="_blank" rel="noopener">LP Guide</a> on the course site.
-    LeetCode explore cards for
-    <a href="https://leetcode.com/explore/learn/card/graph/" target="_blank" rel="noopener">Graphs</a> and
-    <a href="https://leetcode.com/explore/learn/card/dynamic-programming/" target="_blank" rel="noopener">Dynamic Programming</a>
-    are excellent companions.
-  </div>
-
-</main>
-
-<footer>
-  <p>DS 320 Algorithms for Data Science · Boston University · Spring 2026 ·
-    <a href="https://www.kiragoldner.com/teaching/DS320/index.html" target="_blank" rel="noopener">Course Website</a> ·
-    <a href="https://leetcode.com/u/Tsiliii/" target="_blank" rel="noopener">TA's LeetCode</a> ·
-    <a href="https://tsiliii.github.io">tsiliii.github.io</a>
-  </p>
-  <p>Problems selected in the spirit of the course — come to office hours if you're stuck 🙂</p>
-</footer>
-
-<script>
-  // Animated stat counters
-  [{id:'sTotal',v:50},{id:'sEasy',v:14},{id:'sMed',v:24},{id:'sHard',v:12},{id:'sLec',v:22}].forEach(({id,v}) => {
-    const el = document.getElementById(id); if (!el) return;
-    let c = 0;
-    const step = Math.max(1, Math.floor(v/22));
-    const t = setInterval(() => { c = Math.min(c+step,v); el.textContent=c; if(c>=v)clearInterval(t); }, 30);
-  });
-
-  // Extra section toggle
-  function toggleExtra(id) {
-    const wrap = document.getElementById(id);
-    if (!wrap) return;
-    wrap.classList.toggle('open');
-  }
-
-  // Connection toggles — insert a pill before every .prob-sub
-  document.querySelectorAll('.prob-sub').forEach(sub => {
-    const toggle = document.createElement('span');
-    toggle.className = 'conn-toggle';
-    toggle.textContent = 'Connection';
-    toggle.setAttribute('title', 'Show how this problem connects to the lecture material');
-    toggle.addEventListener('click', e => {
-      e.preventDefault();
-      e.stopPropagation();
-      const opening = sub.style.display === 'none' || sub.style.display === '';
-      sub.style.display = opening ? 'block' : 'none';
-      toggle.classList.toggle('open', opening);
-      toggle.textContent = opening ? 'Connection' : 'Connection';
+  <script>
+    // Animated stat counters
+    [{ id: 'sTotal', v: 50 }, { id: 'sEasy', v: 14 }, { id: 'sMed', v: 24 }, { id: 'sHard', v: 12 }, { id: 'sLec', v: 22 }].forEach(({ id, v }) => {
+      const el = document.getElementById(id); if (!el) return;
+      let c = 0;
+      const step = Math.max(1, Math.floor(v / 22));
+      const t = setInterval(() => { c = Math.min(c + step, v); el.textContent = c; if (c >= v) clearInterval(t); }, 30);
     });
-    sub.parentNode.insertBefore(toggle, sub);
-  });
-</script>
+
+    // Extra section toggle
+    function toggleExtra(id) {
+      const wrap = document.getElementById(id);
+      if (!wrap) return;
+      wrap.classList.toggle('open');
+    }
+
+    // Help toggles — insert a pill before every .prob-sub
+    document.querySelectorAll('.prob-sub').forEach(sub => {
+      const toggle = document.createElement('span');
+      toggle.className = 'conn-toggle';
+      toggle.textContent = 'Help';
+      toggle.setAttribute('title', 'Show how this problem connects to the lecture material');
+      toggle.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const opening = sub.style.display === 'none' || sub.style.display === '';
+        sub.style.display = opening ? 'block' : 'none';
+        toggle.classList.toggle('open', opening);
+        toggle.textContent = opening ? 'Help' : 'Help';
+      });
+      sub.parentNode.insertBefore(toggle, sub);
+    });
+  </script>
 </body>
+
 </html>
