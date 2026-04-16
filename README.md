@@ -41,6 +41,18 @@ Tsiliii.github.io/
 
 > **All files marked with ← are placeholders.** Replace them with your actual files, keeping the same filenames.
 
+## 📚 DS320 Practice Page
+
+The project includes a curated LeetCode practice page for **DS 320: Algorithms for Data Science** at Boston University (Spring 2026).
+
+- **Location**: `ds320-practice/index.html`
+- **Live URL**: [tsiliii.github.io/ds320-practice/](https://tsiliii.github.io/ds320-practice/)
+- **Features**:
+  - 70+ problems mapped lecture-by-lecture.
+  - "Help" toggles for each problem explaining the connection to course materials.
+  - "Beyond the Curriculum" section for advanced topics (Union-Find, Monotonic Stack, etc.).
+  - Unified design theme consistent with the main academic site.
+
 ## 🌐 Deploy to GitHub Pages
 
 ### 1. Create the repository
