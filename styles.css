@@ -548,6 +548,13 @@ img {
   border-radius: 4px;
 }
 
+.paper-card__note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 500;
+}
+
 .paper-card__link {
   font-size: 0.85rem;
   font-weight: 500;
