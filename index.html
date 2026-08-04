@@ -325,6 +325,8 @@
           </div>
           <div class="presentation-item__links">
             <a href="assets/slides/budget-jecco-2026.pdf" target="_blank" rel="noopener">slides</a>
+            <a href="https://jecco2026.gitlab.io/" target="_blank" rel="noopener">website</a>
+            <button type="button" class="presentation-item__photos" data-talk-gallery="jecco-2026" hidden>photos</button>
           </div>
         </div>
 
@@ -431,6 +433,41 @@
     </div>
   </section>
 
+  <div class="talk-gallery-data" hidden aria-hidden="true">
+    <div class="talk-gallery-data__set" data-talk-gallery-set="jecco-2026">
+      <a
+        href="assets/talks/jecco-2026/01-group-photo.jpeg"
+        data-caption="JECCO UK 2026 group photo"
+        data-alt="Group photo at JECCO UK 2026"
+      ></a>
+      <a
+        href="assets/talks/jecco-2026/02-talk-photo.jpeg"
+        data-caption="Presenting at JECCO UK 2026"
+        data-alt="Presenting at JECCO UK 2026"
+      ></a>
+      <a
+        href="assets/talks/jecco-2026/03-talk-slide-photo.jpeg"
+        data-caption="Presenting the budget-feasible procurement talk at JECCO UK 2026"
+        data-alt="Giving the talk at JECCO UK 2026"
+      ></a>
+      <a
+        href="assets/talks/jecco-2026/04-quad-lawn.jpeg"
+        data-caption="Oxford college quad during JECCO UK 2026"
+        data-alt="Oxford college quad during JECCO UK 2026"
+      ></a>
+      <a
+        href="assets/talks/jecco-2026/05-college-building.jpeg"
+        data-caption="College building in Oxford during JECCO UK 2026"
+        data-alt="College building in Oxford during JECCO UK 2026"
+      ></a>
+      <a
+        href="assets/talks/jecco-2026/06-fountain-courtyard.jpeg"
+        data-caption="Fountain courtyard in Oxford during JECCO UK 2026"
+        data-alt="Fountain courtyard in Oxford during JECCO UK 2026"
+      ></a>
+    </div>
+  </div>
+
   <!-- ==================== PERSONAL ==================== -->
   <section class="section section--alt" id="personal">
     <div class="container">
@@ -473,9 +510,12 @@
   </section>
 
   <!-- ==================== IMAGE MODAL ==================== -->
-  <div id="imageModal" class="modal">
-    <span class="modal__close">&times;</span>
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image preview">
+    <button type="button" class="modal__close" aria-label="Close image preview">&times;</button>
+    <button type="button" class="modal__nav modal__nav--prev" aria-label="Previous image" hidden>&lsaquo;</button>
     <img class="modal__content" id="modalImage" alt="Enlarged Image" />
+    <button type="button" class="modal__nav modal__nav--next" aria-label="Next image" hidden>&rsaquo;</button>
+    <div id="modalCounter" class="modal__counter" hidden></div>
     <div id="modalCaption" class="modal__caption"></div>
   </div>
 

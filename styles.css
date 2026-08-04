@@ -687,8 +687,26 @@ img {
   transition: all var(--transition-fast);
 }
 
+.presentation-item__links button {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-accent);
+  transition: all var(--transition-fast);
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
 .presentation-item__links a:hover {
   background: var(--accent-dim);
+}
+
+.presentation-item__links button:hover {
+  background: var(--accent-dim);
+  color: var(--accent-hover);
 }
 
 /* ---------- Notes Section ---------- */
@@ -840,8 +858,16 @@ img {
   object-fit: contain;
 }
 
+.modal__counter {
+  margin-top: 1rem;
+  color: rgba(253, 246, 227, 0.82);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
 .modal__caption {
-  margin-top: 15px;
+  margin-top: 0.75rem;
   width: 80%;
   max-width: 700px;
   text-align: center;
@@ -873,12 +899,46 @@ img {
   transition: color var(--transition-fast);
   cursor: pointer;
   z-index: 2001;
+  background: none;
+  border: none;
+  line-height: 1;
 }
 
 .modal__close:hover,
 .modal__close:focus {
   color: var(--accent);
   text-decoration: none;
+}
+
+.modal__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(253, 246, 227, 0.22);
+  background: rgba(7, 54, 66, 0.45);
+  color: var(--bg-primary);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal__nav:hover,
+.modal__nav:focus {
+  background: rgba(42, 161, 152, 0.28);
+  border-color: rgba(42, 161, 152, 0.5);
+  color: #ffffff;
+}
+
+.modal__nav--prev {
+  left: 2rem;
+}
+
+.modal__nav--next {
+  right: 2rem;
 }
 
 /* ---------- Scroll Reveal (JS-driven) ---------- */
@@ -1004,6 +1064,14 @@ img {
     gap: 0.75rem;
   }
 
+  .modal__nav--prev {
+    left: 1rem;
+  }
+
+  .modal__nav--next {
+    right: 1rem;
+  }
+
   .personal__gallery {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
@@ -1026,5 +1094,21 @@ img {
   .about__photo {
     width: 200px;
     height: 250px;
+  }
+
+  .modal__nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+  }
+
+  .modal__close {
+    top: 20px;
+    right: 24px;
+  }
+
+  .modal__caption {
+    width: 88%;
+    font-size: 0.92rem;
   }
 }
