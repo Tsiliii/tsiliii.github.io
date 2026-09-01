@@ -402,6 +402,33 @@ img {
   font-weight: 600;
 }
 
+.availability {
+  margin: 1.75rem 0 2rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.availability h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+}
+
+.availability p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.availability a {
+  color: var(--accent);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
 .about__details {
   display: grid;
   grid-template-columns: 1fr 1fr;
