@@ -22,7 +22,6 @@ Tsiliii.github.io/
 ├── README.md               # This file
 └── assets/
     ├── profile.jpg          ← YOUR PROFILE PHOTO (Mani 2019 photo)
-    ├── cv.pdf               ← YOUR CV PDF
     ├── thesis.pdf           ← YOUR THESIS PDF (Learning Augmented Combinatorial Auctions)
     ├── gallery/
     │   ├── gelato.jpg       ← PHOTO: Gelato - Cinque Terre
@@ -98,6 +97,10 @@ All content lives in `index.html`. To update:
 - **Add a presentation**: Copy a `<div class="presentation-item">` block
 - **Add a gallery photo**: Copy a `<div class="gallery-card">` block and add the image to `assets/gallery/`
 - **Update bio**: Edit the text in the About section
+
+The CV links point to the generated `cv.pdf` in
+[`Tsiliii/cv`](https://github.com/Tsiliii/cv). That repository recompiles the
+PDF automatically whenever its `main.tex` changes.
 
 After editing, commit and push:
 ```bash
