@@ -1,0 +1,49 @@
+name: Sync CV
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-cv
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v5
+
+      - name: Download and validate CV
+        run: |
+          curl --fail --location --retry 3 \
+            --output "$RUNNER_TEMP/cv.pdf" \
+            https://raw.githubusercontent.com/Tsiliii/cv/main/cv.pdf
+
+          if [ "$(head -c 5 "$RUNNER_TEMP/cv.pdf")" != "%PDF-" ]; then
+            echo "Downloaded file is not a PDF" >&2
+            exit 1
+          fi
+
+          install -m 0644 "$RUNNER_TEMP/cv.pdf" assets/cv.pdf
+
+      - name: Commit an updated CV
+        run: |
+          if git diff --quiet -- assets/cv.pdf; then
+            echo "CV is already current"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/cv.pdf
+          git commit -m "Update CV"
+          git pull --rebase origin main
+          git push origin HEAD:main

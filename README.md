@@ -101,7 +101,8 @@ All content lives in `index.html`. To update:
 
 The CV source is maintained and compiled in
 [`Tsiliii/cv`](https://github.com/Tsiliii/cv). The generated PDF is copied to
-`assets/cv.pdf` so it opens in the browser's native PDF viewer.
+`assets/cv.pdf` so it opens in the browser's native PDF viewer. An hourly
+GitHub Actions workflow keeps the website copy synchronized automatically.
 
 After editing, commit and push:
 ```bash
